@@ -31,3 +31,12 @@ print(squares)
 
 for index, fruit in enumerate(fruits):
   print(f"Index {index}: {fruit}")
+
+fruitsCopy = fruits[:] # using the slice method or you can use .copy()
+print("this is a copy: ", fruitsCopy)
+
+my_foods = ['steak', 'pizza', 'chicken']
+friends_food = my_foods[:]
+friends_food.append('fish')
+
+print(f"My favorite foods are {my_foods} and my friends favorite food is {friends_food}")
