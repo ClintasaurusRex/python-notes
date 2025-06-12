@@ -40,3 +40,15 @@ friends_food = my_foods[:]
 friends_food.append('fish')
 
 print(f"My favorite foods are {my_foods} and my friends favorite food is {friends_food}")
+
+
+def countVowels(text):
+  vowels = "aeiouAEIOU"
+  count = 0
+
+  for char in text:
+    if char in vowels:
+      count += 1
+  return count
+sentence = "Hello, how are you?"
+print(countVowels(sentence))
