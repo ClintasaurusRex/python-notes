@@ -60,8 +60,21 @@ print('one two three')
 # age = age + 10
 # print(f'In 10 years, {name} will be {age} years old')
 
-user_input = int(input("Pick 1 or 0:\n"))
-if user_input == 1:
-    print("F")
-else:
-    print("T")
+# user_input = int(input("Pick 1 or 0:\n"))
+# if user_input == 1:
+#     print("F")
+# else:
+#     print("T")
+
+def remove_duplicates_and_sort(numbers):
+    # Convert the list to a set to remove duplicates, then back to a list
+    no_dupes = []
+    for num in numbers:
+       if not num in no_dupes:
+          no_dupes.append(num)
+         
+    return sorted(no_dupes)
+
+numbers = [4, 2, 7, 4, 2, 9, 1]
+result = remove_duplicates_and_sort(numbers)
+print(result)  # Output: [1, 2, 4, 7, 9]
