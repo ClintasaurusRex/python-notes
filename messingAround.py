@@ -52,3 +52,16 @@ def countVowels(text):
   return count
 sentence = "Hello, how are you?"
 print(countVowels(sentence))
+print('one two three')
+
+# name = input()
+# age = int(input())
+# # Write code here
+# age = age + 10
+# print(f'In 10 years, {name} will be {age} years old')
+
+user_input = int(input("Pick 1 or 0:\n"))
+if user_input == 1:
+    print("F")
+else:
+    print("T")
