@@ -78,3 +78,23 @@ def remove_duplicates_and_sort(numbers):
 numbers = [4, 2, 7, 4, 2, 9, 1]
 result = remove_duplicates_and_sort(numbers)
 print(result)  # Output: [1, 2, 4, 7, 9]
+
+# def bill_calc(bill):
+#   tip = float(bill * 0.20)
+#   return format(bill + tip, ".2f")
+
+# print(bill_calc(20.25))
+
+# for i in range(1, 11):
+#   print(i)
+
+#   number = 27
+# power_of_two = 1
+
+# while power_of_two <= number:
+#     power_of_two *= 2
+
+# print(power_of_two)
+
+for i in range(20, 9, -2):
+  print(i)
