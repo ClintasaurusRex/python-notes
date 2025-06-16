@@ -96,5 +96,8 @@ print(result)  # Output: [1, 2, 4, 7, 9]
 
 # print(power_of_two)
 
-for i in range(20, 9, -2):
-  print(i)
+# for i in range(20, 9, -2):
+#   print(i)
+for i in range(3):
+    for j in range(3):
+        print(i, j)
