@@ -118,8 +118,3 @@ print(result)  # Output: [1, 2, 4, 7, 9]
 #     print(sum_numbers())
 
 print("product sum----------------")
-def square_number(n):
-    return n ** 2
-
-result = square_number(int(input()))
-print(result)
