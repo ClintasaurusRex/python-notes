@@ -118,3 +118,21 @@ print(result)  # Output: [1, 2, 4, 7, 9]
 #     print(sum_numbers())
 
 print("product sum----------------")
+print("Welcome to FizzBuzz!")
+
+def fizzbuzz(num):
+    for i in range(1, num + 1):  # include 'num' itself
+        if i % 3 == 0 and i % 7 == 0:
+            print("FizzBuzz")
+        elif i % 3 == 0:
+            print("Fizz")
+        elif i % 7 == 0:
+            print("Buzz")
+        else:
+            print(i)
+
+# Get input and cast to int
+number = int(input())
+
+# Call the function
+fizzbuzz(number)
