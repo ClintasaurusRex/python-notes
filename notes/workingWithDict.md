@@ -2,22 +2,23 @@
 
 ## Table of Contents
 
-- [Introduction](#introduction)
-- [Creating a Dictionary](#creating-a-dictionary)
-- [Accessing Values](#accessing-values)
-- [Adding and Modifying Entries](#adding-and-modifying-entries)
-- [Removing Entries](#removing-entries)
-- [Looping Through Dictionaries](#looping-through-dictionaries)
-- [Dictionary Built-in Methods](#dictionary-built-in-methods)
-  - [keys()](#keys)
-  - [values()](#values)
-  - [items()](#items)
-  - [get()](#get)
-  - [pop() and popitem()](#pop-and-popitem)
-  - [update()](#update)
-  - [clear()](#clear)
-- [Dictionary Comprehensions](#dictionary-comprehensions)
-- [Conclusion](#conclusion)
+- [Introduction](#introduction): Brief overview of what dictionaries are and why they are important in Python.
+- [Creating a Dictionary](#creating-a-dictionary): How to create dictionaries using different methods.
+- [Accessing Values](#accessing-values): How to retrieve values from a dictionary using keys and the `get()` method.
+- [Adding and Modifying Entries](#adding-and-modifying-entries): How to add new key-value pairs or update existing ones in a dictionary.
+- [Removing Entries](#removing-entries): Ways to remove items from a dictionary using `del`, `pop()`, and `popitem()`.
+- [Looping Through Dictionaries](#looping-through-dictionaries): How to iterate over keys, values, or key-value pairs in a dictionary.
+- [Dictionary Built-in Methods](#dictionary-built-in-methods): Overview of useful built-in methods for dictionaries, such as `keys()`, `values()`, `items()`, `get()`, `pop()`, `popitem()`, `update()`, and `clear()`.
+  - [keys()](#keys): Returns a view of all keys in the dictionary.
+  - [values()](#values): Returns a view of all values in the dictionary.
+  - [items()](#items): Returns a view of all key-value pairs as tuples.
+  - [get()](#get): Retrieves a value for a given key, with an optional default if the key is missing.
+  - [pop() and popitem()](#pop-and-popitem): Removes and returns a value by key, or removes and returns the last inserted key-value pair.
+  - [update()](#update): Updates the dictionary with key-value pairs from another dictionary or iterable.
+  - [clear()](#clear): Removes all items from the dictionary.
+- [Dictionary Comprehensions](#dictionary-comprehensions): How to create dictionaries in a concise way using comprehensions.
+- [Other Handy Built-in Functions for Dictionaries](#other-handy-built-in-functions-for-dictionaries): Useful Python built-in functions like `len()`, `dict()`, `sorted()`, `any()`, `all()`, and `zip()` when working with dictionaries.
+- [Conclusion](#conclusion): Summary of why dictionaries are useful and encouragement to practice using them.
 
 ---
 

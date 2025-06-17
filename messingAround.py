@@ -98,6 +98,28 @@ print(result)  # Output: [1, 2, 4, 7, 9]
 
 # for i in range(20, 9, -2):
 #   print(i)
-for i in range(3):
-    for j in range(3):
-        print(i, j)
+# n = int(input())
+# res = 0
+# print('-------------------------------------------')
+# for i in range(n):
+#     a = int(input())
+#     res += a
+
+# print(res)
+
+# def sum_numbers():
+#     sum = 0
+#     for i in range(1, 10001):
+#         sum += i 
+#     print(sum)
+
+# n = int(input())
+# for _ in range(n):
+#     print(sum_numbers())
+
+print("product sum----------------")
+def square_number(n):
+    return n ** 2
+
+result = square_number(int(input()))
+print(result)
