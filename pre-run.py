@@ -1,12 +1,14 @@
 
+def sum_of_digits(num):
+  total = 0
+  for digit in str(num):
+    total += int(digit)
+  print(total) 
 
 
-def change_element(list1, index, list2):
-    # Write your code below
-    modified_list1 = list1.copy()
-    modified_list2 = list2.copy()
 
-    modified_list1[index] = modified_list2[0]
-    return modified_list1
+def sum_of_digits(num):
+  split = sum(int(d) for d in str(num))
+  print(split)
 
-change_element([1, 2, 3], 1, [5, 6, 7])
+sum_of_digits(123) # output = 6
