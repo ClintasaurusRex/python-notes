@@ -136,3 +136,35 @@ number = int(input())
 
 # Call the function
 fizzbuzz(number)
+
+def change_element(lst, index, new_element): # THIS IS IMPORTANT
+    # Make a copy to avoid changing the original list
+    modified_list = lst.copy()
+    # Change the element at the given index
+    modified_list[index] = new_element
+    return modified_list
+
+# Example usage:
+result = change_element([1, 2, 3], 0, 9)
+print(result)  # Output: [9, 2, 3]\
+
+
+# Create a function named change_element that receives 3 arguments:
+
+# First argument is a list
+# Second argument is an index
+# Third argument is another list
+# The function should replace the element at the given index in the first list with the first element from the second list.
+
+# Example:
+
+# change_element([1, 2, 3], 1, [5, 6, 7]) should return [1, 5, 3]
+def change_element(list1, index, list2):
+    # Write your code below
+    modified_list1 = list1.copy()
+    modified_list2 = list2.copy()
+
+    modified_list1[index] = modified_list2[0]
+    return modified_list1
+
+change_element([1, 2, 3], 1, [5, 6, 7])
