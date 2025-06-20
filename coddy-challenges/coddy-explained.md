@@ -238,3 +238,54 @@ reversed([1, 2, 3])  # Output: [3, 2, 1]
 
 - Slicing with `[::-1]` is a quick and Pythonic way to reverse a list.
 - It works for any list, regardless of its contents or length.
+
+---
+
+## 9. Finding Indices Based on Conditions
+
+```python
+lst = list(map(int, input().split(",")))
+# Write your code below
+indices = []
+for index, num in enumerate(lst):
+    if num < 50 or num % 5 == 0:
+        indices.append(index)
+print(indices)
+```
+
+**What is this code doing?**
+
+- Gets comma-separated numbers from user input and converts them to a list of integers.
+- Creates an empty list called `indices` to store the positions of numbers that meet our criteria.
+- Uses `enumerate()` to loop through the list, getting both the index (position) and the number at each position.
+- Checks if each number is either less than 50 OR divisible by 5.
+- If the condition is met, adds the index (position) to our `indices` list.
+- Prints the final list of indices.
+
+**Why does this work?**
+
+- `input().split(",")` takes user input like "2,4,6,8,10" and splits it into a list of strings: `["2", "4", "6", "8", "10"]`.
+- `map(int, ...)` converts each string to an integer: `[2, 4, 6, 8, 10]`.
+- `list(...)` converts the map object to a proper list.
+- `enumerate(lst)` gives us pairs of (index, value): `(0, 2), (1, 4), (2, 6), (3, 8), (4, 10)`.
+- `num < 50 or num % 5 == 0` checks if the number meets either condition (less than 50 OR divisible by 5).
+- `indices.append(index)` adds the position (not the number itself) to our results list.
+
+**Example walkthrough:**
+
+For input "2,4,6,8,10":
+
+- Index 0, number 2: 2 < 50 ✓ → add index 0
+- Index 1, number 4: 4 < 50 ✓ → add index 1
+- Index 2, number 6: 6 < 50 ✓ → add index 2
+- Index 3, number 8: 8 < 50 ✓ → add index 3
+- Index 4, number 10: 10 < 50 ✓ and 10 % 5 == 0 ✓ → add index 4
+
+Output: `[0, 1, 2, 3, 4]`
+
+**Summary:**
+
+- This program finds the positions (indices) of numbers that are either below 50 or divisible by 5.
+- It returns the indices, not the actual numbers themselves.
+
+---
