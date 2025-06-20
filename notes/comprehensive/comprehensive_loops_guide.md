@@ -829,8 +829,34 @@ for char in reversed(word):
     print(char, end="")
 
 # Output: Reversed word: nohtyP
+
 ```
 
+#### Reverse using the splice method
+
+```python
+def reversed(lst):
+    print(lst[::-1])
+
+reversed([1, 2, 3])  # Output: [3, 2, 1]
+```
+
+**What is this code doing?**
+
+- Defines a function `reversed` that takes a list as input.
+- Uses slicing with `[::-1]` to create a new list that is the reverse of the original.
+- Prints the reversed list.
+- For the example `[1, 2, 3]`, it outputs `[3, 2, 1]`.
+
+**Why does `lst[::-1]` reverse the list?**
+
+- The slicing syntax `lst[start:stop:step]` allows you to extract parts of a list.
+- When you use `[::-1]`, you are telling Python:
+  - Start from the end of the list and move backwards (step is -1).
+  - This creates a new list with all the elements in reverse order.
+- No need for a loop or extra code—Python handles the reversal efficiently with slicing.
+
+````
 ### List Comprehensions
 
 **Description:** List comprehensions provide a concise way to create lists using a loop-like syntax.
@@ -848,7 +874,7 @@ squares = [x**2 for x in range(10)]
 
 print(squares)
 # Output: [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
-```
+````
 
 #### With conditions:
 

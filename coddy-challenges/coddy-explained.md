@@ -5,6 +5,7 @@
 ## 1. Sum of Digits
 
 ### Solution 1
+
 ```python
 def sum_of_digits(num):
     total = 0
@@ -12,7 +13,9 @@ def sum_of_digits(num):
         total += int(digit)
     print(total)
 ```
+
 **Why?**
+
 - Numbers like `123` are stored as a single value in Python.
 - If you want to work with each digit (`1`, `2`, `3`), you need a way to separate them.
 - When you convert the number to a string (`str(123)` becomes `'123'`), each digit becomes a character in the string.
@@ -22,17 +25,21 @@ def sum_of_digits(num):
 ---
 
 ### Solution 2 (List Comprehension)
+
 ```python
 def sum_of_digits(num):
     split = sum(int(d) for d in str(num))
     print(split)
 ```
+
 **Why?**
+
 - This uses a generator expression: `int(d) for d in str(num)` creates each digit as an integer.
 - `sum(...)` adds up all those digits.
 - This is a more concise way to do the same thing as the first solution.
 
 **Example Usage:**
+
 ```python
 sum_of_digits(123)  # Output: 6
 ```
@@ -40,17 +47,21 @@ sum_of_digits(123)  # Output: 6
 ---
 
 ## 2. Looping with Range (Commented Example)
+
 ```python
 for i in range(20, 9, -2):
     print(i)
 ```
+
 **Why?**
+
 - `range(20, 9, -2)` starts at 20, stops before 9, and steps down by 2 each time.
 - This would print: 20, 18, 16, 14, 12, 10.
 
 ---
 
 ## 3. Summing User Input Numbers
+
 ```python
 n = int(input())
 res = 0
@@ -60,7 +71,9 @@ for i in range(n):
     res += a
 print(res)
 ```
+
 **Why?**
+
 - Asks the user how many numbers they want to sum (`n`).
 - Loops `n` times, each time asking for a number and adding it to `res`.
 - Prints the total sum at the end.
@@ -68,6 +81,7 @@ print(res)
 ---
 
 ## 4. Sum Numbers from 1 to 10,000
+
 ```python
 def sum_numbers():
     sum = 0
@@ -75,7 +89,9 @@ def sum_numbers():
         sum += i
     print(sum)
 ```
+
 **Why?**
+
 - Loops from 1 to 10,000 (inclusive).
 - Adds each number to `sum`.
 - Prints the total, which is the sum of the first 10,000 natural numbers.
@@ -83,6 +99,7 @@ def sum_numbers():
 ---
 
 ## 5. FizzBuzz
+
 ```python
 print("product sum----------------")
 print("Welcome to FizzBuzz!")
@@ -101,7 +118,9 @@ def fizzbuzz(num):
 number = int(input())
 fizzbuzz(number)
 ```
+
 **Why?**
+
 - Loops from 1 to the user’s number.
 - Prints "FizzBuzz" if the number is divisible by both 3 and 7.
 - Prints "Fizz" if divisible by 3, "Buzz" if divisible by 7.
@@ -113,6 +132,7 @@ fizzbuzz(number)
 ## 6. Change Element in a List
 
 ### Version 1: Replace Element at Index
+
 ```python
 def change_element(lst, index, new_element):
     # Make a copy to avoid changing the original list
@@ -125,7 +145,9 @@ def change_element(lst, index, new_element):
 result = change_element([1, 2, 3], 0, 9)
 print(result)  # Output: [9, 2, 3]
 ```
+
 **Why?**
+
 - Copies the list so the original isn’t changed.
 - Updates the element at the specified index.
 - Returns the modified list.
@@ -133,6 +155,7 @@ print(result)  # Output: [9, 2, 3]
 ---
 
 ### Version 2: Replace with First Element from Another List
+
 ```python
 def change_element(list1, index, list2):
     modified_list1 = list1.copy()
@@ -144,9 +167,74 @@ def change_element(list1, index, list2):
 result = change_element([1, 2, 3], 1, [5, 6, 7])
 print(result)  # Output: [1, 5, 3]
 ```
+
 **Why?**
+
 - Copies both lists to avoid changing the originals.
 - Replaces the element at the given index in the first list with the **first element** from the second list.
 - Returns the modified list.
 
 ---
+
+## 7. Product of Numbers in a List
+
+```python
+def prod(lst):
+    product = 1
+    for num in lst:
+        product *= num
+    print(product)
+
+prod([1, 2, 3])  # Output: 6
+```
+
+**What is this code doing?**
+
+- Defines a function `prod` that takes a list of numbers as input.
+- Initializes a variable `product` to 1.
+- Loops through each number in the list (`for num in lst:`).
+- Multiplies `product` by each number in the list (`product *= num`).
+- After the loop, prints the final product.
+- For the example `[1, 2, 3]`, it calculates `1 * 2 * 3 = 6` and prints `6`.
+
+**Why do we start with 1 when finding the product?**
+
+- If you start with 0, any number multiplied by 0 is 0, so the result would always be 0.
+- 1 is the **multiplicative identity**: multiplying by 1 does not change the value of the other number.
+- Starting with 1 ensures the product is correct, just like how you start with 0 when adding numbers (since 0 is the additive identity).
+
+**Summary:**
+
+- This function multiplies all the numbers in a list together.
+- Initializing the product as 1 is essential for correct multiplication.
+
+---
+
+## 8. Reversing a List Using Slicing
+
+```python
+def reversed(lst):
+    print(lst[::-1])
+
+reversed([1, 2, 3])  # Output: [3, 2, 1]
+```
+
+**What is this code doing?**
+
+- Defines a function `reversed` that takes a list as input.
+- Uses slicing with `[::-1]` to create a new list that is the reverse of the original.
+- Prints the reversed list.
+- For the example `[1, 2, 3]`, it outputs `[3, 2, 1]`.
+
+**Why does `lst[::-1]` reverse the list?**
+
+- The slicing syntax `lst[start:stop:step]` allows you to extract parts of a list.
+- When you use `[::-1]`, you are telling Python:
+  - Start from the end of the list and move backwards (step is -1).
+  - This creates a new list with all the elements in reverse order.
+- No need for a loop or extra code—Python handles the reversal efficiently with slicing.
+
+**Summary:**
+
+- Slicing with `[::-1]` is a quick and Pythonic way to reverse a list.
+- It works for any list, regardless of its contents or length.
