@@ -238,3 +238,115 @@ reversed([1, 2, 3])  # Output: [3, 2, 1]
 
 - Slicing with `[::-1]` is a quick and Pythonic way to reverse a list.
 - It works for any list, regardless of its contents or length.
+
+# Create a program that takes two inputs: a string of numbers separated by spaces, and a prefix string. The program should split the number string into individual numbers, add the prefix to each number, then join these modified numbers back into a single string separated by spaces. Finally, print the resulting string.
+
+```python
+numbers = input()
+prefix = input()
+
+nums = numbers.split()
+prefixed_nums = [prefix + num for num in nums]
+result = ' '.join(prefixed_nums)
+print(result)
+```
+
+## Comprehensive Guide: Adding Prefixes to Numbers
+
+### What This Program Does
+This program takes a string of space-separated numbers and adds a prefix to each number, then outputs the modified numbers as a single string.
+
+### Step-by-Step Breakdown
+
+#### Step 1: Getting User Input
+```python
+numbers = input()  # Example: "1 2 3 4"
+prefix = input()   # Example: "item"
+```
+- First input: A string containing numbers separated by spaces
+- Second input: The prefix string to add to each number
+
+#### Step 2: Splitting the Numbers
+```python
+nums = numbers.split()
+```
+- `split()` without arguments splits on any whitespace (spaces, tabs, newlines)
+- Converts the string into a list of individual number strings
+- Example: `"1 2 3 4"` becomes `['1', '2', '3', '4']`
+
+#### Step 3: Adding Prefixes (List Comprehension)
+```python
+prefixed_nums = [prefix + num for num in nums]
+```
+This line uses a **list comprehension** - let's break it down:
+
+**What is a List Comprehension?**
+- A concise way to create a new list by applying an operation to each item in an existing list
+- Format: `[expression for item in iterable]`
+
+**How it works here:**
+- `for num in nums`: Loops through each number in the `nums` list
+- `prefix + num`: For each number, concatenates (joins) the prefix with that number
+- `[...]`: Creates a new list with all the prefixed numbers
+
+**Example walkthrough:**
+- `nums = ['1', '2', '3', '4']`
+- `prefix = "item"`
+- Loop iteration 1: `"item" + "1"` = `"item1"`
+- Loop iteration 2: `"item" + "2"` = `"item2"`
+- Loop iteration 3: `"item" + "3"` = `"item3"`
+- Loop iteration 4: `"item" + "4"` = `"item4"`
+- Result: `['item1', 'item2', 'item3', 'item4']`
+
+**Alternative without list comprehension:**
+```python
+prefixed_nums = []
+for num in nums:
+    prefixed_nums.append(prefix + num)
+```
+
+#### Step 4: Joining Back Into a String
+```python
+result = ' '.join(prefixed_nums)
+```
+- `join()` is a string method that combines list elements into a single string
+- `' '.join()` uses a space as the separator between elements
+- Example: `['item1', 'item2', 'item3', 'item4']` becomes `"item1 item2 item3 item4"`
+
+#### Step 5: Output the Result
+```python
+print(result)
+```
+- Prints the final string with all prefixed numbers
+
+### Complete Example Run
+```
+Input 1: "10 20 30"
+Input 2: "num"
+
+Step-by-step:
+1. numbers = "10 20 30"
+2. prefix = "num"
+3. nums = ['10', '20', '30']
+4. prefixed_nums = ['num10', 'num20', 'num30']
+5. result = "num10 num20 num30"
+6. Output: "num10 num20 num30"
+```
+
+### Key Concepts Used
+
+1. **String Methods:**
+   - `split()`: Breaks strings into lists
+   - `join()`: Combines lists into strings
+
+2. **String Concatenation:**
+   - `+` operator joins strings together
+   - `"hello" + "world"` = `"helloworld"`
+
+3. **List Comprehension:**
+   - Concise way to transform lists
+   - `[expression for item in list]`
+
+4. **Data Flow:**
+   - String → List → Modified List → String
+   - Each step transforms the data for the next operation
