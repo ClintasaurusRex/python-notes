@@ -239,53 +239,133 @@ reversed([1, 2, 3])  # Output: [3, 2, 1]
 - Slicing with `[::-1]` is a quick and Pythonic way to reverse a list.
 - It works for any list, regardless of its contents or length.
 
----
-
-## 9. Finding Indices Based on Conditions
+# Create a program that takes two inputs: a string of numbers separated by spaces, and a prefix string. The program should split the number string into individual numbers, add the prefix to each number, then join these modified numbers back into a single string separated by spaces. Finally, print the resulting string.
 
 ```python
-lst = list(map(int, input().split(",")))
-# Write your code below
-indices = []
-for index, num in enumerate(lst):
-    if num < 50 or num % 5 == 0:
-        indices.append(index)
-print(indices)
+numbers = input()
+prefix = input()
+
+nums = numbers.split()
+prefixed_nums = [prefix + num for num in nums]
+result = ' '.join(prefixed_nums)
+print(result)
 ```
 
-**What is this code doing?**
+## Comprehensive Guide: Adding Prefixes to Numbers
 
-- Gets comma-separated numbers from user input and converts them to a list of integers.
-- Creates an empty list called `indices` to store the positions of numbers that meet our criteria.
-- Uses `enumerate()` to loop through the list, getting both the index (position) and the number at each position.
-- Checks if each number is either less than 50 OR divisible by 5.
-- If the condition is met, adds the index (position) to our `indices` list.
-- Prints the final list of indices.
+### What This Program Does
 
-**Why does this work?**
+This program takes a string of space-separated numbers and adds a prefix to each number, then outputs the modified numbers as a single string.
 
-- `input().split(",")` takes user input like "2,4,6,8,10" and splits it into a list of strings: `["2", "4", "6", "8", "10"]`.
-- `map(int, ...)` converts each string to an integer: `[2, 4, 6, 8, 10]`.
-- `list(...)` converts the map object to a proper list.
-- `enumerate(lst)` gives us pairs of (index, value): `(0, 2), (1, 4), (2, 6), (3, 8), (4, 10)`.
-- `num < 50 or num % 5 == 0` checks if the number meets either condition (less than 50 OR divisible by 5).
-- `indices.append(index)` adds the position (not the number itself) to our results list.
+### Step-by-Step Breakdown
+
+#### Step 1: Getting User Input
+
+```python
+numbers = input()  # Example: "1 2 3 4"
+prefix = input()   # Example: "item"
+```
+
+- First input: A string containing numbers separated by spaces
+- Second input: The prefix string to add to each number
+
+#### Step 2: Splitting the Numbers
+
+```python
+nums = numbers.split()
+```
+
+- `split()` without arguments splits on any whitespace (spaces, tabs, newlines)
+- Converts the string into a list of individual number strings
+- Example: `"1 2 3 4"` becomes `['1', '2', '3', '4']`
+
+#### Step 3: Adding Prefixes (List Comprehension)
+
+```python
+prefixed_nums = [prefix + num for num in nums]
+```
+
+This line uses a **list comprehension** - let's break it down:
+
+**What is a List Comprehension?**
+
+- A concise way to create a new list by applying an operation to each item in an existing list
+- Format: `[expression for item in iterable]`
+
+**How it works here:**
+
+- `for num in nums`: Loops through each number in the `nums` list
+- `prefix + num`: For each number, concatenates (joins) the prefix with that number
+- `[...]`: Creates a new list with all the prefixed numbers
 
 **Example walkthrough:**
 
-For input "2,4,6,8,10":
+- `nums = ['1', '2', '3', '4']`
+- `prefix = "item"`
+- Loop iteration 1: `"item" + "1"` = `"item1"`
+- Loop iteration 2: `"item" + "2"` = `"item2"`
+- Loop iteration 3: `"item" + "3"` = `"item3"`
+- Loop iteration 4: `"item" + "4"` = `"item4"`
+- Result: `['item1', 'item2', 'item3', 'item4']`
 
-- Index 0, number 2: 2 < 50 ✓ → add index 0
-- Index 1, number 4: 4 < 50 ✓ → add index 1
-- Index 2, number 6: 6 < 50 ✓ → add index 2
-- Index 3, number 8: 8 < 50 ✓ → add index 3
-- Index 4, number 10: 10 < 50 ✓ and 10 % 5 == 0 ✓ → add index 4
+**Alternative without list comprehension:**
 
-Output: `[0, 1, 2, 3, 4]`
+```python
+prefixed_nums = []
+for num in nums:
+    prefixed_nums.append(prefix + num)
+```
 
-**Summary:**
+#### Step 4: Joining Back Into a String
 
-- This program finds the positions (indices) of numbers that are either below 50 or divisible by 5.
-- It returns the indices, not the actual numbers themselves.
+```python
+result = ' '.join(prefixed_nums)
+```
 
----
+- `join()` is a string method that combines list elements into a single string
+- `' '.join()` uses a space as the separator between elements
+- Example: `['item1', 'item2', 'item3', 'item4']` becomes `"item1 item2 item3 item4"`
+
+#### Step 5: Output the Result
+
+```python
+print(result)
+```
+
+- Prints the final string with all prefixed numbers
+
+### Complete Example Run
+
+```
+Input 1: "10 20 30"
+Input 2: "num"
+
+Step-by-step:
+1. numbers = "10 20 30"
+2. prefix = "num"
+3. nums = ['10', '20', '30']
+4. prefixed_nums = ['num10', 'num20', 'num30']
+5. result = "num10 num20 num30"
+6. Output: "num10 num20 num30"
+```
+
+### Key Concepts Used
+
+1. **String Methods:**
+
+   - `split()`: Breaks strings into lists
+   - `join()`: Combines lists into strings
+
+2. **String Concatenation:**
+
+   - `+` operator joins strings together
+   - `"hello" + "world"` = `"helloworld"`
+
+3. **List Comprehension:**
+
+   - Concise way to transform lists
+   - `[expression for item in list]`
+
+4. **Data Flow:**
+   - String → List → Modified List → String
+   - Each step transforms the data for the next operation
