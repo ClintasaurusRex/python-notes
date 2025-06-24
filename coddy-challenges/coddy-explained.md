@@ -336,7 +336,7 @@ print(result)
 
 ### Complete Example Run
 
-```
+```python
 Input 1: "10 20 30"
 Input 2: "num"
 
