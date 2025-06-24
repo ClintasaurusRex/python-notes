@@ -239,133 +239,344 @@ reversed([1, 2, 3])  # Output: [3, 2, 1]
 - Slicing with `[::-1]` is a quick and Pythonic way to reverse a list.
 - It works for any list, regardless of its contents or length.
 
-# Create a program that takes two inputs: a string of numbers separated by spaces, and a prefix string. The program should split the number string into individual numbers, add the prefix to each number, then join these modified numbers back into a single string separated by spaces. Finally, print the resulting string.
+---
+
+## 9. Finding Indices Based on Conditions
 
 ```python
-numbers = input()
-prefix = input()
-
-nums = numbers.split()
-prefixed_nums = [prefix + num for num in nums]
-result = ' '.join(prefixed_nums)
-print(result)
+lst = list(map(int, input().split(",")))
+# Write your code below
+indices = []
+for index, num in enumerate(lst):
+    if num < 50 or num % 5 == 0:
+        indices.append(index)
+print(indices)
 ```
 
-## Comprehensive Guide: Adding Prefixes to Numbers
+**What is this code doing?**
 
-### What This Program Does
+- Gets comma-separated numbers from user input and converts them to a list of integers.
+- Creates an empty list called `indices` to store the positions of numbers that meet our criteria.
+- Uses `enumerate()` to loop through the list, getting both the index (position) and the number at each position.
+- Checks if each number is either less than 50 OR divisible by 5.
+- If the condition is met, adds the index (position) to our `indices` list.
+- Prints the final list of indices.
 
-This program takes a string of space-separated numbers and adds a prefix to each number, then outputs the modified numbers as a single string.
+**Why does this work?**
 
-### Step-by-Step Breakdown
-
-#### Step 1: Getting User Input
-
-```python
-numbers = input()  # Example: "1 2 3 4"
-prefix = input()   # Example: "item"
-```
-
-- First input: A string containing numbers separated by spaces
-- Second input: The prefix string to add to each number
-
-#### Step 2: Splitting the Numbers
-
-```python
-nums = numbers.split()
-```
-
-- `split()` without arguments splits on any whitespace (spaces, tabs, newlines)
-- Converts the string into a list of individual number strings
-- Example: `"1 2 3 4"` becomes `['1', '2', '3', '4']`
-
-#### Step 3: Adding Prefixes (List Comprehension)
-
-```python
-prefixed_nums = [prefix + num for num in nums]
-```
-
-This line uses a **list comprehension** - let's break it down:
-
-**What is a List Comprehension?**
-
-- A concise way to create a new list by applying an operation to each item in an existing list
-- Format: `[expression for item in iterable]`
-
-**How it works here:**
-
-- `for num in nums`: Loops through each number in the `nums` list
-- `prefix + num`: For each number, concatenates (joins) the prefix with that number
-- `[...]`: Creates a new list with all the prefixed numbers
+- `input().split(",")` takes user input like "2,4,6,8,10" and splits it into a list of strings: `["2", "4", "6", "8", "10"]`.
+- `map(int, ...)` converts each string to an integer: `[2, 4, 6, 8, 10]`.
+- `list(...)` converts the map object to a proper list.
+- `enumerate(lst)` gives us pairs of (index, value): `(0, 2), (1, 4), (2, 6), (3, 8), (4, 10)`.
+- `num < 50 or num % 5 == 0` checks if the number meets either condition (less than 50 OR divisible by 5).
+- `indices.append(index)` adds the position (not the number itself) to our results list.
 
 **Example walkthrough:**
 
-- `nums = ['1', '2', '3', '4']`
-- `prefix = "item"`
-- Loop iteration 1: `"item" + "1"` = `"item1"`
-- Loop iteration 2: `"item" + "2"` = `"item2"`
-- Loop iteration 3: `"item" + "3"` = `"item3"`
-- Loop iteration 4: `"item" + "4"` = `"item4"`
-- Result: `['item1', 'item2', 'item3', 'item4']`
+For input "2,4,6,8,10":
 
-**Alternative without list comprehension:**
+- Index 0, number 2: 2 < 50 ✓ → add index 0
+- Index 1, number 4: 4 < 50 ✓ → add index 1
+- Index 2, number 6: 6 < 50 ✓ → add index 2
+- Index 3, number 8: 8 < 50 ✓ → add index 3
+- Index 4, number 10: 10 < 50 ✓ and 10 % 5 == 0 ✓ → add index 4
 
-```python
-prefixed_nums = []
-for num in nums:
-    prefixed_nums.append(prefix + num)
-```
+Output: `[0, 1, 2, 3, 4]`
 
-#### Step 4: Joining Back Into a String
+**Summary:**
 
-```python
-result = ' '.join(prefixed_nums)
-```
+- This program finds the positions (indices) of numbers that are either below 50 or divisible by 5.
+- It returns the indices, not the actual numbers themselves.
 
-- `join()` is a string method that combines list elements into a single string
-- `' '.join()` uses a space as the separator between elements
-- Example: `['item1', 'item2', 'item3', 'item4']` becomes `"item1 item2 item3 item4"`
+---
 
-#### Step 5: Output the Result
+## 10. Advanced List Slicing Programs
 
-```python
-print(result)
-```
+These are four different programs that demonstrate various list slicing techniques and conditional logic for processing user input.
 
-- Prints the final string with all prefixed numbers
+---
 
-### Complete Example Run
+### Program 1: Four Different Slicing Operations
+
+**Problem Description:**
+Create a program that receives a list as input and prints four new lists based on specific slicing operations.
 
 ```python
-Input 1: "10 20 30"
-Input 2: "num"
+# Create a program that receives a list as input and prints four new lists based on the following slicing operations:
 
-Step-by-step:
-1. numbers = "10 20 30"
-2. prefix = "num"
-3. nums = ['10', '20', '30']
-4. prefixed_nums = ['num10', 'num20', 'num30']
-5. result = "num10 num20 num30"
-6. Output: "num10 num20 num30"
+# A list containing every fourth element, starting from index 2
+# A list containing all elements from the 3rd element to the 3rd to last element
+# A list containing every element in reverse order, skipping every other element
+# A list containing the first three and last three elements of the original list
+# Name the lists list1, list2, list3 and list4 - accordingly.
+
+original_list = input().split(',')  # Get input and split by commas
+# Write your code below
+list1 = original_list[2::4]          # Every 4th element starting from index 2
+list2 = original_list[2:-2]          # From 3rd element to 3rd-to-last
+list3 = original_list[::-2]          # Reverse order, every other element
+list4 = original_list[:3] + original_list[-3:]  # First 3 + last 3
+
+# Don't change below this line
+print("List 1:", list1)
+print("List 2:", list2)
+print("List 3:", list3)
+print("List 4:", list4)
 ```
 
-### Key Concepts Used
+**How Each Slice Works:**
 
-1. **String Methods:**
+1. **`list1 = original_list[2::4]`**
+   - **Start:** Index 2 (3rd element)
+   - **Step:** 4 (every 4th element)
+   - **Example:** With `[a,b,c,d,e,f,g,h,i,j]` → Gets `[c,g]`
 
-   - `split()`: Breaks strings into lists
-   - `join()`: Combines lists into strings
+2. **`list2 = original_list[2:-2]`**
+   - **Start:** Index 2 (3rd element)
+   - **End:** -2 (up to but not including 2nd-to-last)
+   - **Example:** With `[a,b,c,d,e,f,g,h,i,j]` → Gets `[c,d,e,f,g,h]`
 
-2. **String Concatenation:**
+3. **`list3 = original_list[::-2]`**
+   - **Start:** End of list (omitted with negative step)
+   - **Step:** -2 (every other element, backwards)
+   - **Example:** With `[a,b,c,d,e,f,g,h,i,j]` → Gets `[j,h,f,d,b]`
 
-   - `+` operator joins strings together
-   - `"hello" + "world"` = `"helloworld"`
+4. **`list4 = original_list[:3] + original_list[-3:]`**
+   - **First part:** `[:3]` gets first 3 elements
+   - **Second part:** `[-3:]` gets last 3 elements
+   - **Concatenation:** Combines both parts
+   - **Example:** With `[a,b,c,d,e,f,g,h,i,j]` → Gets `[a,b,c,h,i,j]`
 
-3. **List Comprehension:**
+**Example Input/Output:**
+```
+Input: "1,2,3,4,5,6,7,8,9,10"
+Output:
+List 1: ['3', '7']
+List 2: ['3', '4', '5', '6', '7', '8']
+List 3: ['10', '8', '6', '4', '2']
+List 4: ['1', '2', '3', '8', '9', '10']
+```
 
-   - Concise way to transform lists
-   - `[expression for item in list]`
+---
 
-4. **Data Flow:**
-   - String → List → Modified List → String
-   - Each step transforms the data for the next operation
+### Program 2: Three Slicing Operations with Middle Calculation
+
+**Problem Description:**
+Create a program that receives a list as input and prints three new lists based on specific slicing operations including middle calculation.
+
+```python
+# Create a program that receives a list as input (given) and prints three new lists based on the following slicing operations:
+
+# A list containing every third element, starting from index 1 (the second element)
+# A list containing all the elements from the 6th element to the 1st in reverse order
+# A list containing every second element starting from the middle of the list to the end
+
+lst = input().split(",")  # Get input and split by commas
+
+# Every third element starting from index 1 (2nd element)
+lst1 = lst[1::3]
+print(lst1)
+
+# From 6th element (index 5) to 1st element (index 0) in reverse
+lst2 = lst[6::-1]  # Note: This starts from 7th element (index 6)
+print(lst2)
+
+# Calculate middle point and get every 2nd element from there to end
+middle = len(lst) // 2  # Integer division to find middle index
+lst3 = lst[middle::2]   # From middle to end, every 2nd element
+print(lst3)
+```
+
+**How Each Operation Works:**
+
+1. **`lst1 = lst[1::3]`**
+   - **Start:** Index 1 (2nd element)
+   - **Step:** 3 (every 3rd element)
+   - **Why index 1?** "Starting from index 1" means the second element (0-based indexing)
+
+2. **`lst2 = lst[6::-1]`**
+   - **Start:** Index 6 (7th element)
+   - **End:** Beginning of list
+   - **Step:** -1 (reverse order)
+   - **Note:** This actually starts from the 7th element, not 6th as described
+
+3. **`lst3 = lst[middle::2]`**
+   - **Middle calculation:** `len(lst) // 2` finds the middle index
+   - **From middle to end:** Every 2nd element
+   - **Dynamic:** Middle changes based on list length
+
+**Example Input/Output:**
+```
+Input: "1,2,3,4,5,6,7,8,9,10"
+Output:
+['2', '5', '8']                    # lst1: Every 3rd from index 1
+['7', '6', '5', '4', '3', '2', '1'] # lst2: From 7th to 1st in reverse
+['5', '7', '9']                    # lst3: From middle (index 5) every 2nd
+```
+
+**Why Calculate Middle?**
+- For a list of length 10, `middle = 10 // 2 = 5`
+- This ensures the slicing adapts to different list sizes automatically
+
+---
+
+### Program 3: Conditional List Processing
+
+**Problem Description:**
+Create a program that processes lists differently based on their length.
+
+```python
+# Create a program that takes a list and prints:
+
+# For lists with 5 or more items: the first two and last two items
+# For lists with less than 5 items: the first and last item only
+
+input_list = input().split(', ')  # Note: Split by ', ' (comma + space)
+
+# Write your code below
+if len(input_list) > 5:  # More than 5 items (as written in original)
+    result = input_list[:2] + input_list[-2:]  # First 2 + last 2
+    print(result)
+elif len(input_list) < 5:  # Less than 5 items
+    result = input_list[:1] + input_list[-1:]  # First 1 + last 1
+    print(result)
+# Note: Original code doesn't handle exactly 5 items!
+```
+
+**How the Logic Works:**
+
+1. **Input Processing:**
+   - `input().split(', ')` splits on comma + space
+   - This handles input like "cat, dog, bird, fish"
+
+2. **Condition 1: `len(input_list) > 5`**
+   - **First two:** `input_list[:2]` gets elements at indices 0, 1
+   - **Last two:** `input_list[-2:]` gets last 2 elements
+   - **Concatenation:** `+` combines both slices
+
+3. **Condition 2: `len(input_list) < 5`**
+   - **First one:** `input_list[:1]` gets element at index 0 (as a list)
+   - **Last one:** `input_list[-1:]` gets last element (as a list)
+   - **Why `[:1]` and `[-1:]`?** To keep results as lists for consistency
+
+**Example Input/Output:**
+
+*Case 1: 6 items*
+```
+Input: "cat, dog, bird, fish, hamster, snake"
+Output: ['cat', 'dog', 'hamster', 'snake']
+```
+
+*Case 2: 3 items*
+```
+Input: "cat, dog, bird"
+Output: ['cat', 'bird']
+```
+
+**Important Note:** The original code has a gap - it doesn't handle exactly 5 items! Lists with exactly 5 items won't produce any output.
+
+---
+
+### Program 4: Middle Elements Extraction
+
+**Problem Description:**
+Extract middle elements from a list, handling both even and odd length lists differently.
+
+```python
+# Extract middle elements based on list length
+lst = input().split(",")  # Example input: "1,2,3,4,5,6,7,8,9,10"
+
+lst_len = len(lst)  # Get the length of the list
+
+if lst_len % 2 == 0:  # Even number of elements
+    mid = lst_len // 2          # Find middle index
+    result = lst[mid-1:mid+1]   # Get 2 middle elements
+    print(result)
+else:  # Odd number of elements
+    mid = lst_len // 2          # Find middle index
+    result = lst[mid-1:mid+2]   # Get 3 middle elements
+    print(result)
+```
+
+**How Middle Calculation Works:**
+
+1. **Even Length Lists:**
+   - **Length = 10:** `mid = 10 // 2 = 5`
+   - **Slice:** `lst[4:6]` gets elements at indices 4 and 5
+   - **Why mid-1 to mid+1?** In a 10-element list (indices 0-9), middle elements are at indices 4 and 5
+
+2. **Odd Length Lists:**
+   - **Length = 9:** `mid = 9 // 2 = 4`
+   - **Slice:** `lst[3:6]` gets elements at indices 3, 4, and 5
+   - **Why mid-1 to mid+2?** Gets the true middle element plus one on each side
+
+**Visual Examples:**
+
+*Even length (10 elements):*
+```
+Indices: 0 1 2 3 4 5 6 7 8 9
+Values:  1 2 3 4 5 6 7 8 9 10
+                 ^ ^
+               mid-1 mid  (indices 4,5)
+Result: ['5', '6']
+```
+
+*Odd length (9 elements):*
+```
+Indices: 0 1 2 3 4 5 6 7 8
+Values:  1 2 3 4 5 6 7 8 9
+               ^ ^ ^
+             mid-1 mid mid+1  (indices 3,4,5)
+Result: ['4', '5', '6']
+```
+
+**Example Input/Output:**
+
+*Even length:*
+```
+Input: "cat,dog,bird,fish,hamster,snake,rabbit,turtle,mouse,frog"
+Output: ['hamster', 'snake']
+```
+
+*Odd length:*
+```
+Input: "cat,dog,bird,fish,hamster,snake,rabbit,turtle,mouse"
+Output: ['fish', 'hamster', 'snake']
+```
+
+**Why This Approach?**
+- **Even lists:** No single middle element, so take the two center elements
+- **Odd lists:** One true middle element, but code takes 3 for symmetry
+- **`//` operator:** Integer division ensures we get whole number indices
+
+---
+
+## Key Learning Points from These Slicing Programs
+
+### 1. **List Slicing Syntax: `[start:end:step]`**
+- **Start:** Where to begin (inclusive)
+- **End:** Where to stop (exclusive)
+- **Step:** How many elements to skip
+
+### 2. **Negative Indices and Steps**
+- **Negative indices:** Count from the end (`-1` is last element)
+- **Negative steps:** Process in reverse order
+
+### 3. **Dynamic Calculations**
+- **Middle finding:** `len(list) // 2` for middle index
+- **Conditional logic:** Different processing based on list properties
+
+### 4. **List Concatenation**
+- **`+` operator:** Combines two lists into one
+- **Multiple slices:** Can combine different parts of the same list
+
+### 5. **Input Processing**
+- **`.split()`:** Converts string input into list
+- **Different delimiters:** `','` vs `', '` affects how input is parsed
+
+### 6. **Common Pitfalls**
+- **Missing conditions:** Not handling all possible cases (like exactly 5 items)
+- **Index confusion:** Remember Python uses 0-based indexing
+- **Off-by-one errors:** Be careful with start/end boundaries in slicing
+
+---
