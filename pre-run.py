@@ -1,12 +1,28 @@
+def not_mutual_friends(list1, list2):
+    # Write your code below
+    only_lst1 = [friend for friend in list1 if friend not in list2]
+    only_lst2 = [friend for friend in list2 if friend not in list1]
+   
 
-lst1 = input().split(",")
-lst2 = input().split(",")
-# Write your code below
-new_lst = []
-for item in lst1:
-  if item not in lst2:
-    new_lst.append(item)
-print(new_lst)
+    non_mutual = only_lst1 + only_lst2
+    return(non_mutual)
+  
+
+not_mutual_friends(["John", "Emma", "Mike", "Sarah"], ["Emma", "Tom", "Sarah", "Peter"])
+
+
+
+
+
+
+# lst1 = input().split(",")
+# lst2 = input().split(",")
+# # Write your code below
+# new_lst = []
+# for item in lst1:
+#   if item not in lst2:
+#     new_lst.append(item)
+# print(new_lst)
 
 
 
