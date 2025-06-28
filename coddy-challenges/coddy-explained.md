@@ -327,16 +327,19 @@ print("List 4:", list4)
 **How Each Slice Works:**
 
 1. **`list1 = original_list[2::4]`**
+
    - **Start:** Index 2 (3rd element)
    - **Step:** 4 (every 4th element)
    - **Example:** With `[a,b,c,d,e,f,g,h,i,j]` → Gets `[c,g]`
 
 2. **`list2 = original_list[2:-2]`**
+
    - **Start:** Index 2 (3rd element)
    - **End:** -2 (up to but not including 2nd-to-last)
    - **Example:** With `[a,b,c,d,e,f,g,h,i,j]` → Gets `[c,d,e,f,g,h]`
 
 3. **`list3 = original_list[::-2]`**
+
    - **Start:** End of list (omitted with negative step)
    - **Step:** -2 (every other element, backwards)
    - **Example:** With `[a,b,c,d,e,f,g,h,i,j]` → Gets `[j,h,f,d,b]`
@@ -348,6 +351,7 @@ print("List 4:", list4)
    - **Example:** With `[a,b,c,d,e,f,g,h,i,j]` → Gets `[a,b,c,h,i,j]`
 
 **Example Input/Output:**
+
 ```
 Input: "1,2,3,4,5,6,7,8,9,10"
 Output:
@@ -390,11 +394,13 @@ print(lst3)
 **How Each Operation Works:**
 
 1. **`lst1 = lst[1::3]`**
+
    - **Start:** Index 1 (2nd element)
    - **Step:** 3 (every 3rd element)
    - **Why index 1?** "Starting from index 1" means the second element (0-based indexing)
 
 2. **`lst2 = lst[6::-1]`**
+
    - **Start:** Index 6 (7th element)
    - **End:** Beginning of list
    - **Step:** -1 (reverse order)
@@ -406,6 +412,7 @@ print(lst3)
    - **Dynamic:** Middle changes based on list length
 
 **Example Input/Output:**
+
 ```
 Input: "1,2,3,4,5,6,7,8,9,10"
 Output:
@@ -415,6 +422,7 @@ Output:
 ```
 
 **Why Calculate Middle?**
+
 - For a list of length 10, `middle = 10 // 2 = 5`
 - This ensures the slicing adapts to different list sizes automatically
 
@@ -446,10 +454,12 @@ elif len(input_list) < 5:  # Less than 5 items
 **How the Logic Works:**
 
 1. **Input Processing:**
+
    - `input().split(', ')` splits on comma + space
    - This handles input like "cat, dog, bird, fish"
 
 2. **Condition 1: `len(input_list) > 5`**
+
    - **First two:** `input_list[:2]` gets elements at indices 0, 1
    - **Last two:** `input_list[-2:]` gets last 2 elements
    - **Concatenation:** `+` combines both slices
@@ -461,13 +471,15 @@ elif len(input_list) < 5:  # Less than 5 items
 
 **Example Input/Output:**
 
-*Case 1: 6 items*
+_Case 1: 6 items_
+
 ```
 Input: "cat, dog, bird, fish, hamster, snake"
 Output: ['cat', 'dog', 'hamster', 'snake']
 ```
 
-*Case 2: 3 items*
+_Case 2: 3 items_
+
 ```
 Input: "cat, dog, bird"
 Output: ['cat', 'bird']
@@ -501,6 +513,7 @@ else:  # Odd number of elements
 **How Middle Calculation Works:**
 
 1. **Even Length Lists:**
+
    - **Length = 10:** `mid = 10 // 2 = 5`
    - **Slice:** `lst[4:6]` gets elements at indices 4 and 5
    - **Why mid-1 to mid+1?** In a 10-element list (indices 0-9), middle elements are at indices 4 and 5
@@ -512,7 +525,8 @@ else:  # Odd number of elements
 
 **Visual Examples:**
 
-*Even length (10 elements):*
+_Even length (10 elements):_
+
 ```
 Indices: 0 1 2 3 4 5 6 7 8 9
 Values:  1 2 3 4 5 6 7 8 9 10
@@ -521,7 +535,8 @@ Values:  1 2 3 4 5 6 7 8 9 10
 Result: ['5', '6']
 ```
 
-*Odd length (9 elements):*
+_Odd length (9 elements):_
+
 ```
 Indices: 0 1 2 3 4 5 6 7 8
 Values:  1 2 3 4 5 6 7 8 9
@@ -532,51 +547,302 @@ Result: ['4', '5', '6']
 
 **Example Input/Output:**
 
-*Even length:*
+_Even length:_
+
 ```
 Input: "cat,dog,bird,fish,hamster,snake,rabbit,turtle,mouse,frog"
 Output: ['hamster', 'snake']
 ```
 
-*Odd length:*
+_Odd length:_
+
 ```
 Input: "cat,dog,bird,fish,hamster,snake,rabbit,turtle,mouse"
 Output: ['fish', 'hamster', 'snake']
 ```
 
 **Why This Approach?**
+
 - **Even lists:** No single middle element, so take the two center elements
 - **Odd lists:** One true middle element, but code takes 3 for symmetry
 - **`//` operator:** Integer division ensures we get whole number indices
 
 ---
 
-## Key Learning Points from These Slicing Programs
+## 11. List Comparison and Slicing Practice
 
-### 1. **List Slicing Syntax: `[start:end:step]`**
-- **Start:** Where to begin (inclusive)
-- **End:** Where to stop (exclusive)
-- **Step:** How many elements to skip
+### Program 1: Find Non-Mutual Friends
 
-### 2. **Negative Indices and Steps**
-- **Negative indices:** Count from the end (`-1` is last element)
-- **Negative steps:** Process in reverse order
+**Problem Description:**
+Given two lists of names (representing two people's friend lists), return a list of names that are friends with only one person (not mutual friends).
 
-### 3. **Dynamic Calculations**
-- **Middle finding:** `len(list) // 2` for middle index
-- **Conditional logic:** Different processing based on list properties
+```python
+# Find friends that are not mutual between two lists
 
-### 4. **List Concatenation**
-- **`+` operator:** Combines two lists into one
-- **Multiple slices:** Can combine different parts of the same list
+def not_mutual_friends(list1, list2):
+    only_lst1 = [friend for friend in list1 if friend not in list2]  # Friends only in list1
+    only_lst2 = [friend for friend in list2 if friend not in list1]  # Friends only in list2
+    non_mutual = only_lst1 + only_lst2  # Combine both
+    return non_mutual
 
-### 5. **Input Processing**
-- **`.split()`:** Converts string input into list
-- **Different delimiters:** `','` vs `', '` affects how input is parsed
+# Example usage:
+result = not_mutual_friends(["John", "Emma", "Mike", "Sarah"], ["Emma", "Tom", "Sarah", "Peter"])
+print(result)
+```
 
-### 6. **Common Pitfalls**
-- **Missing conditions:** Not handling all possible cases (like exactly 5 items)
-- **Index confusion:** Remember Python uses 0-based indexing
-- **Off-by-one errors:** Be careful with start/end boundaries in slicing
+**What is this code doing?**
+
+- Defines a function that takes two lists.
+- Uses list comprehensions to find names only in one list and not the other.
+- Combines both lists to get all non-mutual friends.
+- Returns the result.
+
+**Output:**
+
+```
+['John', 'Mike', 'Tom', 'Peter']
+```
+
+**Guide:**
+
+- Use list comprehensions to filter out mutual friends.
+- Combine the unique friends from both lists.
+- This is useful for comparing any two sets of data to find differences.
+
+---
+
+### Program 2: Elements in First List but Not in Second
+
+**Problem Description:**
+Given two lists from user input, print all elements that are in the first list but NOT in the second list.
+
+```python
+# Get two lists from user input, separated by commas
+lst1 = input().split(",")
+lst2 = input().split(",")
+
+# Find elements in lst1 not in lst2
+new_lst = []
+for item in lst1:
+    if item not in lst2:
+        new_lst.append(item)
+print(new_lst)
+```
+
+**What is this code doing?**
+
+- Takes two comma-separated lists from the user.
+- Loops through the first list and checks if each item is NOT in the second list.
+- Adds non-matching items to a new list.
+- Prints the result.
+
+**Example Input:**
+
+```
+a,b,c,d
+a,c,e
+```
+
+**Output:**
+
+```
+['b', 'd']
+```
+
+**Guide:**
+
+- This is a classic way to find the difference between two lists.
+- You can use list comprehensions for a shorter version: `[item for item in lst1 if item not in lst2]`
+
+---
+
+### Program 3: List Slicing and Pattern Construction
+
+**Problem Description:**
+Given a list of numbers from user input, create a new list by combining the first element, the original list, the reversed list, and the last element, then repeat this pattern twice.
+
+```python
+# Get a list of numbers from user input (space-separated)
+numbers = input().split()
+
+# Slicing and pattern construction
+reverse_lst = numbers[::-1]      # Reverse the list
+first = numbers[:1]              # First element as a list
+last = numbers[-1:]              # Last element as a list
+new_lst = first + numbers + reverse_lst + last  # Combine pattern
+repeat = new_lst * 2             # Repeat pattern twice
+print(repeat)
+```
+
+**What is this code doing?**
+
+- Takes a space-separated list of numbers from the user.
+- Slices to get the first and last elements as lists.
+- Reverses the list using slicing (`[::-1]`).
+- Combines: first + original + reversed + last.
+- Repeats the pattern twice.
+- Prints the final list.
+
+**Example Input:**
+
+```
+1 2 3
+```
+
+**Output:**
+
+```
+['1', '2', '3', '3', '2', '1', '1', '1', '2', '3', '3', '2', '1', '1']
+```
+
+**Guide:**
+
+- Slicing is a powerful way to manipulate lists.
+- You can use `[::-1]` to reverse, `[:1]` for the first element, and `[-1:]` for the last.
+- Combining and repeating patterns is common in data processing and formatting.
+
+---
+
+## 12. Further List Comparison and Pattern Challenges
+
+### Program 1: Symmetric Difference with Sets (Alternative Non-Mutual Friends)
+
+**Problem Description:**
+Find all names that are only in one of two friend lists, using set operations for efficiency and clarity.
+
+```python
+def not_mutual_friends_set(list1, list2):
+    # Use set symmetric difference to find non-mutual friends
+    return list(set(list1) ^ set(list2))
+
+# Example usage:
+result = not_mutual_friends_set(["John", "Emma", "Mike", "Sarah"], ["Emma", "Tom", "Sarah", "Peter"])
+print(sorted(result))
+```
+
+**What is this code doing?**
+
+- Converts both lists to sets.
+- Uses the `^` operator (symmetric difference) to find all elements that are in either set, but not both.
+- Converts the result back to a list.
+- `sorted(result)` is used for consistent output order (since sets are unordered).
+
+**Output:**
+
+```
+['John', 'Mike', 'Peter', 'Tom']
+```
+
+**Guide:**
+
+- Set operations are much faster for large lists.
+- Symmetric difference is a direct way to find non-mutual elements.
+- Use `set(list1) - set(list2)` for items only in `list1`.
+
+---
+
+### Program 2: List Intersection (Mutual Friends)
+
+**Problem Description:**
+Find all names that appear in both friend lists (mutual friends).
+
+```python
+def mutual_friends(list1, list2):
+    # Use set intersection to find mutual friends
+    return list(set(list1) & set(list2))
+
+# Example usage:
+result = mutual_friends(["John", "Emma", "Mike", "Sarah"], ["Emma", "Tom", "Sarah", "Peter"])
+print(sorted(result))
+```
+
+**What is this code doing?**
+
+- Converts both lists to sets.
+- Uses the `&` operator (intersection) to find all elements present in both sets.
+- Converts the result back to a list.
+- `sorted(result)` is used for consistent output order.
+
+**Output:**
+
+```
+['Emma', 'Sarah']
+```
+
+**Guide:**
+
+- Set intersection is the most efficient way to find common elements between two lists.
+- Useful for social network analysis, group comparisons, and more.
+
+---
+
+### Program 3: List Union (All Unique Friends)
+
+**Problem Description:**
+Combine two friend lists into one list of all unique names (no duplicates).
+
+```python
+def all_unique_friends(list1, list2):
+    # Use set union to combine all unique names
+    return list(set(list1) | set(list2))
+
+# Example usage:
+result = all_unique_friends(["John", "Emma", "Mike", "Sarah"], ["Emma", "Tom", "Sarah", "Peter"])
+print(sorted(result))
+```
+
+**What is this code doing?**
+
+- Converts both lists to sets.
+- Uses the `|` operator (union) to combine all unique elements from both sets.
+- Converts the result back to a list.
+- `sorted(result)` is used for consistent output order.
+
+**Output:**
+
+```
+['Emma', 'John', 'Mike', 'Peter', 'Sarah', 'Tom']
+```
+
+**Guide:**
+
+- Set union is the fastest way to merge lists and remove duplicates.
+- Useful for combining groups, mailing lists, or any scenario where you want all unique items.
+
+---
+
+### Program 4: List Difference with List Comprehension (Alternative Syntax)
+
+**Problem Description:**
+Find all items in the first list that are not in the second list, using a list comprehension for brevity.
+
+```python
+lst1 = input().split(",")
+lst2 = input().split(",")
+# List comprehension version
+diff = [item for item in lst1 if item not in lst2]
+print(diff)
+```
+
+**What is this code doing?**
+
+- Takes two comma-separated lists as input.
+- Uses a list comprehension to filter out items in `lst1` that are also in `lst2`.
+- Prints the result.
+
+**Example Input/Output:**
+
+```
+Input:
+a,b,c,d
+a,c,e
+Output:
+['b', 'd']
+```
+
+**Guide:**
+
+- List comprehensions are concise and Pythonic for filtering.
+- This is equivalent to the loop-based approach, but shorter.
 
 ---
