@@ -846,3 +846,79 @@ Output:
 - This is equivalent to the loop-based approach, but shorter.
 
 ---
+
+## 12. Find All Occurrences of a Pattern in Text
+
+```python
+def find_occurrences(text, pattern):
+    # Write your code here
+    indices = []
+    for i in range(len(text) - len(pattern) + 1):
+        if text[i:i+len(pattern)] == pattern:
+
+            indices.append(i)
+
+    if indices:
+        return(True, len(indices), indices)
+    else:
+        return (False, 0, [])
+
+# Read input
+text = input()
+pattern = input()
+
+# Call your function and print the result
+result = find_occurrences(text, pattern)
+print(result)
+```
+
+**How it Works: A Line-by-Line Explanation**
+
+Let's use the example `text = "abababab"` and `pattern = "aba"`.
+
+1.  **`def find_occurrences(text, pattern):`**
+
+    - This line defines a function that takes two string inputs: the `text` to search through and the `pattern` to look for.
+
+2.  **`indices = []`**
+
+    - This creates an empty list named `indices`. We will use this to store the starting positions (indexes) of every match we find.
+
+3.  **`for i in range(len(text) - len(pattern) + 1):`**
+
+    - This starts a `for` loop to check every possible starting position.
+    - `len(text)` is 8. `len(pattern)` is 3.
+    - The calculation is `range(8 - 3 + 1)`, which becomes `range(6)`.
+    - This means the loop variable `i` will be `0, 1, 2, 3, 4, 5`. Each value is a starting position in the `text`.
+
+4.  **`if text[i:i+len(pattern)] == pattern:`**
+
+    - This is the core check. It cuts out a "slice" of `text` that is the same length as `pattern` and sees if it's a match.
+    - **When i is 0:** It checks if `text[0:3]` ("aba") equals "aba". **Yes.**
+    - **When i is 1:** It checks if `text[1:4]` ("bab") equals "aba". No.
+    - **When i is 2:** It checks if `text[2:5]` ("aba") equals "aba". **Yes.**
+    - **When i is 3:** It checks if `text[3:6]` ("bab") equals "aba". No.
+    - **When i is 4:** It checks if `text[4:7]` ("aba") equals "aba". **Yes.**
+    - **When i is 5:** It checks if `text[5:8]` ("bab") equals "aba". No.
+
+5.  **`indices.append(i)`**
+
+    - This line only runs if the `if` statement found a match. It adds the current position `i` to our list.
+    - After checking `i=0`, `indices` becomes `[0]`.
+    - After checking `i=2`, `indices` becomes `[0, 2]`.
+    - After checking `i=4`, `indices` becomes `[0, 2, 4]`.
+
+6.  **`if indices:`**
+
+    - After the loop, this checks if the `indices` list is empty. Since our list is `[0, 2, 4]`, it is not empty, so this is `True`.
+
+7.  **`return(True, len(indices), indices)`**
+
+    - Because the list was not empty, this line runs. It returns a tuple with three items:
+      1.  `True` (the pattern was found).
+      2.  `len(indices)` (the number of times it was found, which is 3).
+      3.  `indices` (the list of positions, `[0, 2, 4]`).
+    - The final result is `(True, 3, [0, 2, 4])`.
+
+8.  **`else: return (False, 0, [])`**
+    - This part only runs if no matches were found and the `indices` list remained empty. It would return a tuple indicating the pattern was not found.
