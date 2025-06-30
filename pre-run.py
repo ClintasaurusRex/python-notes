@@ -1,40 +1,14 @@
-# Create a function named find_occurrences that:
+# Write a Python program that performs the following tasks:
 
-# Takes two string arguments: text and pattern
-# Counts how many times pattern appears in text, including overlapping occurrences
-# Returns a tuple containing:
-# A boolean indicating if the pattern was found (True/False)
-# The number of occurrences of the pattern
-# A list of starting positions where the pattern was found
-# For example, if text is "abababab" and pattern is "aba", your function should return (True, 3, [0, 2, 4]), since "aba" appears at positions 0, 2, and 4.
+# Assign values to three variables name, age, and city in a single line. Set name to "Alice", age to 30, and city to "New York".
+# Assign the value 100 to three variables x, y, and z in a single line.
+# Create a list named colors containing the values "red", "green", and "blue". Assign these values to three variables color1, color2, and color3 in a single line.
 
-# If the pattern is not found, return (False, 0, []).
+name, age, city = "Alice", 30, "New York"
+x = y = z = 100
+colors = ["red", "green", "blue"]
+color1, color2, color3 = colors
 
-
-def find_occurrences(text, pattern):
-    # Write your code here
-    indices = []
-    for i in range(len(text) - len(pattern) + 1):
-        if text[i:i+len(pattern)] == pattern:
-
-            indices.append(i)
-
-    if indices:
-        return(True, len(indices), indices)
-    else:
-        return (False, 0, [])
-
-# Read input
-text = input()
-pattern = input()
-
-# Call your function and print the result
-result = find_occurrences(text, pattern)
-print(result)
-
-
-
-# n = int(input())
-# rows = int(n/2)+1
-# for i in range(rows):
-#   print("*" * (2 * i + 1))
+print(f"Name: {name}, Age: {age}, City: {city}")
+print(f"x: {x}, y: {y}, z: {z}")
+print(f"Colors: {color1}, {color2}, {color3}")
