@@ -1,14 +1,19 @@
-# Write a Python program that performs the following tasks:
+# Create a function named calculate_discount that takes two parameters:
 
-# Assign values to three variables name, age, and city in a single line. Set name to "Alice", age to 30, and city to "New York".
-# Assign the value 100 to three variables x, y, and z in a single line.
-# Create a list named colors containing the values "red", "green", and "blue". Assign these values to three variables color1, color2, and color3 in a single line.
+# price: The original price of an item (float)
+# discount_percentage: The discount percentage (float)
+# The function should:
 
-name, age, city = "Alice", 30, "New York"
-x = y = z = 100
-colors = ["red", "green", "blue"]
-color1, color2, color3 = colors
+# Calculate the discount amount
+# Subtract the discount amount from the original price
+# Round the result to 2 decimal places
+# Return the final discounted price
+# For example, if the original price is $100 and the discount is 20%, the function should return $80.00.
 
-print(f"Name: {name}, Age: {age}, City: {city}")
-print(f"x: {x}, y: {y}, z: {z}")
-print(f"Colors: {color1}, {color2}, {color3}")
+def calculate_discount(price, discount_percentage):
+  discount = float(price) * float(discount_percentage) / 100
+  calc_with_discount = price - discount
+  return round(calc_with_discount, 2)
+
+print(calculate_discount(75.5, 10))
+print(calculate_discount(349.99, 25.5))
