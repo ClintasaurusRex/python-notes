@@ -1,19 +1,40 @@
-# Create a function named calculate_discount that takes two parameters:
+# List Casting
 
-# price: The original price of an item (float)
-# discount_percentage: The discount percentage (float)
-# The function should:
+# You can use the list() function to cast iterables like tuples, strings, or ranges into lists. This is useful for working with elements in a modifiable format.
 
-# Calculate the discount amount
-# Subtract the discount amount from the original price
-# Round the result to 2 decimal places
-# Return the final discounted price
-# For example, if the original price is $100 and the discount is 20%, the function should return $80.00.
+# Casting a tuple to a list:
 
-def calculate_discount(price, discount_percentage):
-  discount = float(price) * float(discount_percentage) / 100
-  calc_with_discount = price - discount
-  return round(calc_with_discount, 2)
+# my_tuple = (1, 2, 3)
+# my_list = list(my_tuple)
+# print(my_list)  # [1, 2, 3]
+# Casting a string splits it into individual characters:
 
-print(calculate_discount(75.5, 10))
-print(calculate_discount(349.99, 25.5))
+# my_string = "hello"
+# my_list = list(my_string)
+# print(my_list)  # ['h', 'e', 'l', 'l', 'o']
+# Casting a range to a list gives all the numbers at once:
+
+# my_range = range(5)
+# my_list = list(my_range)
+# print(my_list)  # [0, 1, 2, 3, 4]
+# You can also cast to other types like set or dict, but you’ll explore those later. For now, focus on list() to handle and transform data flexibly!
+
+# print(list(range(3, 8, 2))) output 3,5,7
+
+
+# Challenge
+
+# Easy
+# Convert the following data into lists using the list() function:
+
+# A tuple: (10, 20, 30)
+# A string: "python"
+# A range: range(1, 6)
+# Print the resulting lists.
+
+my_tuple = (10,20,30)
+my_str = "python"
+
+print(list(my_tuple)) 
+print(list(my_str))
+print(list(range(1, 6)))
