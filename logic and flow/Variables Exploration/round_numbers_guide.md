@@ -1,89 +1,74 @@
-# Guide: Rounding Numbers in Python
+# Guide: Calculating Discounted Prices in Python
 
-This guide explains how to write a Python program that takes a number and the number of decimal places as input, then outputs the rounded result. The program demonstrates user input, type conversion, and the use of the built-in `round()` function.
-
----
-
-## 1. Program Overview
-
-The program performs these steps:
-
-1. Takes a number as input from the user (as a float).
-2. Takes the number of decimal places to round to (as an integer).
-3. Rounds the number to the specified decimal places.
-4. Prints the rounded result.
+This tutorial explains how to write a Python function that calculates the discounted price of an item, based on the original price and a discount percentage. The code example is from `pre-run.py`.
 
 ---
 
-## 2. Step-by-Step Explanation
+## 1. Problem Statement
 
-### a) Taking User Input
+Write a function that:
+- Takes the original price of an item and a discount percentage as arguments.
+- Calculates the discount amount.
+- Subtracts the discount from the original price.
+- Rounds the result to 2 decimal places.
+- Returns the final discounted price.
+
+---
+
+## 2. Example Code
 
 ```python
-num = float(input())
-```
+def calculate_discount(price, discount_percentage):
+    discount = float(price) * float(discount_percentage) / 100
+    calc_with_discount = price - discount
+    return round(calc_with_discount, 2)
 
-- `input()` gets a string from the user.
-- `float()` converts the string to a floating-point number.
-
-### b) Getting Decimal Places
-
-```python
-decimal_places = int(input())
-```
-
-- `input()` gets another string from the user.
-- `int()` converts it to an integer, representing the number of decimal places.
-
-### c) Rounding the Number
-
-```python
-rounded = round(num, decimal_places)
-```
-
-- `round()` takes two arguments: the number and the number of decimal places.
-- It returns the rounded value.
-
-### d) Outputting the Result
-
-```python
-print(rounded)
-```
-
-- Prints the rounded number to the screen.
-
----
-
-## 3. Example Run
-
-```
-Input:
-3.14159
-2
-
-Output:
-3.14
+print(calculate_discount(75.5, 10))      # 67.95
+print(calculate_discount(349.99, 25.5))  # 260.24
 ```
 
 ---
 
-## 4. Practice
+## 3. Step-by-Step Explanation
 
-- Try different numbers and decimal places.
-- What happens if you enter 0 for decimal places?
-- Try negative numbers or very large numbers.
-
----
-
-## 5. Summary Table
-
-| Step           | Code Example                    | Description                               |
-| -------------- | ------------------------------- | ----------------------------------------- |
-| Input as float | `num = float(input())`          | Get a floating-point number from the user |
-| Input as int   | `decimal_places = int(input())` | Get an integer from the user              |
-| Rounding       | `round(num, decimal_places)`    | Round to specified decimal places         |
-| Output         | `print(rounded)`                | Print the result                          |
+1. **Calculate the discount amount:**
+   - `discount = float(price) * float(discount_percentage) / 100`
+   - This finds the percentage of the price to discount.
+2. **Subtract the discount from the original price:**
+   - `calc_with_discount = price - discount`
+3. **Round the result to 2 decimal places:**
+   - `return round(calc_with_discount, 2)`
+4. **Return the final price:**
+   - The function returns the discounted price, rounded to two decimals.
 
 ---
 
-This program is a simple way to practice user input, type conversion, and rounding in Python!
+## 4. Example Output
+
+```
+67.95
+260.24
+```
+
+---
+
+## 5. Practice
+
+- Try different prices and discount percentages.
+- What happens if you use a discount percentage of 100?
+- Experiment with rounding by changing the number of decimal places in the `round()` function.
+
+---
+
+## 6. Summary Table
+
+| Step                     | Code Example                              | Description                                      |
+| ------------------------ | ----------------------------------------- | ------------------------------------------------ |
+| Calculate discount       | `discount = float(price) * float(discount_percentage) / 100` | Calculate the discount amount                    |
+| Subtract discount        | `calc_with_discount = price - discount` | Calculate the price after discount               |
+| Rounding                 | `return round(calc_with_discount, 2)`    | Round the final price to 2 decimal places       |
+| Output                   | `print(calculate_discount(75.5, 10))`    | Print the discounted price                      |
+
+---
+
+This guide provided a concise way to learn about calculating discounted prices in Python, covering problem statement, example code, step-by-step explanation, and practice exercises.
