@@ -1,40 +1,34 @@
-# List Casting
-
-# You can use the list() function to cast iterables like tuples, strings, or ranges into lists. This is useful for working with elements in a modifiable format.
-
-# Casting a tuple to a list:
-
-# my_tuple = (1, 2, 3)
-# my_list = list(my_tuple)
-# print(my_list)  # [1, 2, 3]
-# Casting a string splits it into individual characters:
-
-# my_string = "hello"
-# my_list = list(my_string)
-# print(my_list)  # ['h', 'e', 'l', 'l', 'o']
-# Casting a range to a list gives all the numbers at once:
-
-# my_range = range(5)
-# my_list = list(my_range)
-# print(my_list)  # [0, 1, 2, 3, 4]
-# You can also cast to other types like set or dict, but you’ll explore those later. For now, focus on list() to handle and transform data flexibly!
-
-# print(list(range(3, 8, 2))) output 3,5,7
+# Dictionaries Part 1
 
 
-# Challenge
 
-# Easy
-# Convert the following data into lists using the list() function:
 
-# A tuple: (10, 20, 30)
-# A string: "python"
-# A range: range(1, 6)
-# Print the resulting lists.
 
-my_tuple = (10,20,30)
-my_str = "python"
+print("-------------------------------------Accessing Values-----------------------------")
+def get_capital(country_capitals, country_name):
+  # This function takes a dictionary of country capitals and a country name (key).
+  # It returns the capital city (value) for the given country.
+  # Example: get_capital({"Norway": "Oslo"}, "Norway") returns "Oslo"
+  return country_capitals[country_name]
 
-print(list(my_tuple)) 
-print(list(my_str))
-print(list(range(1, 6)))
+country_capitals = {"Norway": "Oslo", "Sweden": "Stockholm", "Denmark": "Copenhagen"}
+print(get_capital(country_capitals, "Norway"))  # Output: Oslo
+
+
+
+print("-----------------------------------Create Book Dict--------------------------")
+def create_book_dict(title, author, year):
+  return{"title": title, "author": author, 'year': year}
+
+
+print("-----------------------------------Create Students Dict--------------------------")
+def create_student_dict(name, age, major):
+  # Creating a dictionary with keys and values:
+  # Each key (e.g., "name") is a string that describes the data.
+  # Each value (e.g., name) is the variable passed to the function.
+  # This allows you to store related information together in a structured way.
+  return {
+    "name": name,    # The student's name (string)
+    "age": age,      # The student's age (number)
+    "major": major   # The student's major/field of study (string)
+  }
