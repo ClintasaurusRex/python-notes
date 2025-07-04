@@ -1,6 +1,18 @@
 # Dictionaries Part 1
 
+recipe_book = {"Pancakes": ["flour", "milk", "eggs", "sugar"],
+               "Salad": ["lettuce", "tomato", "cucumber", "olive oil"]
+               }
+
+print("-------------------------------------RECIPE BOOK---------------------------------------")
+print(recipe_book.get("Pancakes"))
+recipe_book["Smoothie"] = ["banana", "milk", "honey"]
+recipe_book["Smoothie"].append("blueberries")
+print(recipe_book)
+
 # Create a function named update_inventory that takes three parameters: inventory_dict (a dictionary), item (a string), and quantity (an integer). The function should update the inventory_dict with the new item and quantity. If the item already exists in the inventory, its quantity should be increased by the given amount. If the item does not exist, a new item should be added with the given quantity. The function should return the updated dictionary.
+
+print("-------------------------------------RECIPE Inventory---------------------------------------\n")
 fruits = {"apples":50,"bananas":30}
 def update_inventory(inventory_dict, item, quantity):
     # Write code here
