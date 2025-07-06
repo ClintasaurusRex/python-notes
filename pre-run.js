@@ -1,14 +1,26 @@
-for (let i = 1; i <= 100; i++) {
-  if (i % 3 === 0 && i % 5 === 0) {
-    console.log("Fizzbuzz");
-  } else if (i % 3 === 0) {
-    console.log("fizz");
-  } else if (i % 5 === 0) {
-    console.log("Buzz");
-  } else {
-    console.log(i);
-  }
-}
+// Type your code below
+console.log("1" !== 1);
+
+// let balance = 0;
+
+// balance += 100;
+// let percent = (balance *= 0.1);
+// balance = percent + (100 - 50);
+
+// // Don't change the line below
+// console.log(`balance = ${Math.floor(balance)}`);
+
+// for (let i = 1; i <= 100; i++) {
+//   if (i % 3 === 0 && i % 5 === 0) {
+//     console.log("Fizzbuzz");
+//   } else if (i % 3 === 0) {
+//     console.log("fizz");
+//   } else if (i % 5 === 0) {
+//     console.log("Buzz");
+//   } else {
+//     console.log(i);
+//   }
+// }
 // let count = 0;
 // count += 4 * 2 - 1;
 // console.log(`Count = ${count}`);

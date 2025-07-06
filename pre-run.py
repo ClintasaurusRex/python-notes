@@ -1,5 +1,30 @@
 
 print('--------------------------Looping Through Dictionaries-----------------------')
+data1 = [1, 2, 2, 3, 3, 3, 4, 4, 4, 4]
+def freq_counter(data_list):
+   new_dict = {}
+   for item in data_list:
+      if item in new_dict:
+         new_dict[item] += 1
+      else:
+         new_dict[item] = 1
+   print(new_dict)
+freq_counter(data1)
+
+print("----------------------------------print_product_details-----------------------------------")
+data = {"name":"Laptop","brand":"Dell","price":799.99,"stock":15}
+
+def print_product_details(product_data):
+   if not product_data:
+      print("No product information available")
+   for key, value in product_data.items():
+      print(f"{key.capitalize()}: {value}")
+
+print_product_details(data)
+print_product_details({})
+
+
+print("----------------------------------print_employee_details-----------------------------------")
 details = {"Alice": "HR", "Bob": "Engineering", "Diana": "Marketing"}
 mt = {}
 
