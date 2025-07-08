@@ -1,7 +1,15 @@
-// Type your code below
-console.log("1" !== 1);
+let has_license = true;
+let has_insurance = false;
+let has_experience = true;
 
-// let balance = 0;
+let can_drive_car = (has_license && has_insurance) || (has_license && has_experience);
+let can_drive_motorcycle = has_license && has_experience && has_insurance;
+let cannot_drive_any = !(has_experience && has_license) && has_insurance;
+
+// Don't delete the lines below
+console.log("Can drive car:", can_drive_car);
+console.log("Can drive motorcycle:", can_drive_motorcycle);
+console.log("Cannot drive any:", cannot_drive_any);
 
 // balance += 100;
 // let percent = (balance *= 0.1);
