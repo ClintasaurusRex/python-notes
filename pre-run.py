@@ -1,26 +1,51 @@
-print("--------------------------Contact Book App-------------------------")
-contact_book = {}
-print("Contact Book Menu:")
-def display_menu():
-   menu_lst = ["Add Contact", "View Contact", "Edit Contact", "Delete Contact", "List All Contacts", "Exit"]
-   for index, item in enumerate(menu_lst):
-    print(f"{index + 1}. {item}")
+# How the ternary operator works
+# The ternary operator is a shorthand way of writing an if-else statement. 
+# it allows you to assign a value based on a condition in a single line.
 
-def add_contact(contact_book):
-  name = input("Enter contact name: ")
-  phone = input("Enter phone number: ")
-  email = input("Enter email address: ")
-  address = input("Enter address: ")
+#  Challenge 1
+# score = int(input())
+# status = "Pass" if score > 50 else "Fail" 
+# print(status)
 
-  if name in contact_book:
-    print("Contact already exists!")
-  else: 
-    contact_book[name] = {
-      "phone": phone,
-      "email": email,
-      "address": address
-    }
-    print("Contact added successfully")
-display_menu()
-add_contact(contact_book)
-print(contact_book)
+# Challenge 2
+
+# Write a program that takes a float input temperature representing the current temp in Celcius. 
+# Use the ternary operator to determine a warning status based on the temperature
+
+# temperature = float(input())
+# status = "Hot" if temperature > 30 else "Normal"
+# print(status)
+
+
+# Challenge 3
+
+# Membership checks in Python let you check if a value exists in a collection like a 
+# list, tuple, set, or dictionary using in and not in.Membership checks in Python let 
+# you check if a value exists in a collection like a list, tuple, set, or dictionary using in and not in.
+
+names = ["Alice", "Bob", "Charlie"]
+grades = {"Alice": 85, "Bob": 90, "Charlie": 78}
+
+if "Alice" in names:
+  print("Alice is in the list.")
+if "David" not in names:
+  print("David is not in the list.")
+
+if "Bob" in grades:
+  print("Bob is in the dictionary.")
+if "Eve" not in names:
+  print("Eve is not in the dictionary.")
+
+def check_inventory(products, quantities):
+
+  if "Apples" in products:
+    print("Apples are in stock.")
+  if "Oranges" not in products:
+    print("Oranges are not in stock")
+  if "Bananas" in quantities:
+    print("Bananas quantity is tracked.")
+  if "Grapes" not in quantities:
+    print("Grapes quantity is not tracked")
+
+check_inventory(["Apples","Bananas","Milk","Bread","Eggs"],
+{"Bananas":30,"Milk":10,"Bread":20})
