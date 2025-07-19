@@ -1,7 +1,13 @@
-let age = 25;
+let billAmount = parseFloat(1000);
+let tipPercentage = parseFloat(15);
+let numPeople = 7;
 
-yearsTill = 120 - age;
-console.log(`${yearsTill} years till 120`);
+let tipAmount = (tipPercentage / 100) * billAmount;
+let totalAmount = billAmount + tipAmount;
+let amountPerPerson = totalAmount / numPeople;
+
+console.log(totalAmount);
+console.log(amountPerPerson);
 
 // let length = 5;
 // let width = 3.2;
