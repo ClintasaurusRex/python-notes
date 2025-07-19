@@ -1,3 +1,4 @@
+import time
 # How the ternary operator works
 # The ternary operator is a shorthand way of writing an if-else statement. 
 # it allows you to assign a value based on a condition in a single line.
@@ -72,3 +73,41 @@ def compare_strings(str1, str2):
 st1 = "hello"
 st2 = 'HELLO'
 compare_strings(st1, st2)
+
+
+# ----------------------------------Challenge 5
+
+# Get inputs from the user
+destination = "Hawaii"
+price = float(1800)
+nights = int(5)
+family_preference = bool(int(1))     # 1 for True, 0 for False
+package_family_friendly = bool(int(1))  # 1 for True, 0 for False
+
+# Check if the package is suitable
+# Condition 1: Check destination
+if (destination is "Hawaii" or destination is "Bahamas"):
+    # Condition 2: Check price and nights
+    if (price < 2000 and nights >= 4):
+        # Condition 3: Check family-friendliness preference
+        if (family_preference <= 1 and package_family_friendly <= 1):
+            print("Package is suitable")
+        else:
+            print("Package is not suitable")
+    else:
+        print("Package is not suitable")
+else:
+    print("Package is not suitable")
+
+
+# my_time = int(input("Enter the time in seconds: "))
+# for x in range(my_time, 0, -1):
+#   seconds = x % 60
+#   minutes = int(x / 60) % 60 
+#   hours = int(x / 3600)
+
+#   print(f"{hours:02}:{minutes:02}:{seconds:02}")
+#   time.sleep(1)
+
+# time.sleep(3)
+# print("TIMES UP")

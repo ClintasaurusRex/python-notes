@@ -1,3 +1,64 @@
+let age = 25;
+
+yearsTill = 120 - age;
+console.log(`${yearsTill} years till 120`);
+
+// let length = 5;
+// let width = 3.2;
+
+// let lengthFloat = parseFloat(length);
+// let widthFloat = parseFloat(width);
+
+// let area = lengthFloat * widthFloat;
+// let perimeter = (lengthFloat + widthFloat) * 2;
+
+// console.log(`The area is: ${area} and the perimeter is: ${perimeter}`);
+
+/* You are given a user input, a number grade (0-100) stored in a variable.
+Use a switch statement to determine the corresponding letter grade based on these ranges:
+90-100: "A"
+80-89: "B"
+70-79: "C"
+60-69: "D"
+0-59: "F"
+Print the letter grade.
+Handle invalid input (numbers outside the 0-100 range) by printing "Invalid grade".
+
+Tip: You can use parseInt() to convert the input to an integer. To check a range of numbers in a case statement, you can use case with a condition like this:
+
+// Get the number grade from the user*/
+// let numGrade = -2;
+
+// // Convert input to a number
+// numGrade = parseInt(numGrade);
+
+// // Determine the letter grade using a switch statement
+// let letterGrade;
+
+// switch (true) {
+//   // Write your code here
+//   case numGrade >= 90 && numGrade <= 100:
+//     letterGrade = "A";
+//     break;
+//   case numGrade >= 80 && numGrade <= 89:
+//     letterGrade = "B";
+//     break;
+//   case numGrade >= 70 && numGrade <= 79:
+//     letterGrade = "C";
+//     break;
+//   case numGrade >= 60 && numGrade <= 69:
+//     letterGrade = "D";
+//     break;
+//   case numGrade < 60 && numGrade >= 0:
+//     letterGrade = "F";
+//     break;
+//   default:
+//     letterGrade = "Invalid grade";
+// }
+
+// // Print the letter grade
+// console.log(`Letter grade: ${letterGrade}`);
+
 // balance += 100;
 // let percent = (balance *= 0.1);
 // balance = percent + (100 - 50);
