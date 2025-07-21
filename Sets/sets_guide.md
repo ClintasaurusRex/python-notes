@@ -3,6 +3,7 @@
 A complete tutorial on understanding and using sets in Python, from basic concepts to advanced operations.
 
 ## Table of Contents
+
 1.  [Introduction to Sets](#introduction-to-sets)
 2.  [Key Characteristics of Sets](#key-characteristics-of-sets)
 3.  [Creating Sets](#creating-sets)
@@ -16,12 +17,13 @@ A complete tutorial on understanding and using sets in Python, from basic concep
     - [Intersection: Finding Common Elements](#intersection-finding-common-elements)
     - [Difference: Finding Unique Elements in One Set](#difference-finding-unique-elements-in-one-set)
     - [Symmetric Difference: Finding Non-Shared Elements](#symmetric-difference-finding-non-shared-elements)
-6.  [Helpful Set Methods](#helpful-set-methods)
-7.  [Practical Scenarios and Use Cases](#practical-scenarios-and-use-cases)
+6.  [Chaining Set Methods for Complex Queries](#chaining-set-methods-for-complex-queries)
+7.  [Helpful Set Methods](#helpful-set-methods)
+8.  [Practical Scenarios and Use Cases](#practical-scenarios-and-use-cases)
     - [Scenario 1: Removing Duplicates from a List](#scenario-1-removing-duplicates-from-a-list)
     - [Scenario 2: Membership Testing (Fast Lookups)](#scenario-2-membership-testing-fast-lookups)
     - [Scenario 3: Comparing Two Groups of Items](#scenario-3-comparing-two-groups-of-items)
-8.  [Conclusion](#conclusion)
+9.  [Conclusion](#conclusion)
 
 ---
 
@@ -34,7 +36,7 @@ In Python, a **set** is an unordered collection of unique, immutable items. Thin
 - **Unordered**: The items in a set do not have a defined order. You cannot access items using an index like you would with a list.
 - **Unique**: A set cannot contain duplicate elements. Any duplicates added will be automatically removed.
 - **Mutable**: Sets themselves are mutable, meaning you can add or remove items from them.
-- **Immutable Elements**: While a set is mutable, the items *within* the set must be of an immutable type (e.g., numbers, strings, tuples). You cannot have a list or another set as an element of a set.
+- **Immutable Elements**: While a set is mutable, the items _within_ the set must be of an immutable type (e.g., numbers, strings, tuples). You cannot have a list or another set as an element of a set.
 
 ---
 
@@ -43,9 +45,11 @@ In Python, a **set** is an unordered collection of unique, immutable items. Thin
 You can create a set in two primary ways.
 
 ### Using Curly Braces `{}`
+
 The most common way is to place comma-separated items inside curly braces.
 
 **Example:**
+
 ```python
 # Creating a set of numbers
 number_set = {1, 2, 3, 4, 5}
@@ -59,12 +63,15 @@ print(mixed_set)
 duplicate_set = {1, 2, 2, 3, 3, 3, 4}
 print(duplicate_set)  # Output: {1, 2, 3, 4}
 ```
+
 > **Note**: To create an empty set, you **must** use the `set()` constructor. Using `{}` will create an empty dictionary.
 
 ### Using the `set()` Constructor
+
 You can also create a set from any iterable (like a list, tuple, or string) using the `set()` constructor.
 
 **Example:**
+
 ```python
 # From a list (duplicates will be removed)
 my_list = [1, 1, 2, 3, 'a', 'a']
@@ -85,10 +92,12 @@ print(empty_set) # Output: set()
 ## Common Set Operations
 
 ### Adding Items
+
 - **`add(item)`**: Adds a single item to the set.
 - **`update(iterable)`**: Adds all items from an iterable (e.g., a list) to the set.
 
 **Example:**
+
 ```python
 permissions = {"read", "write"}
 
@@ -103,12 +112,14 @@ print(permissions)  # Output: {'read', 'write', 'execute', 'guest_access', 'comm
 ```
 
 ### Removing Items
+
 - **`remove(item)`**: Removes the specified item. Raises a `KeyError` if the item is not found.
 - **`discard(item)`**: Removes the specified item. Does **not** raise an error if the item is not found.
 - **`pop()`**: Removes and returns an arbitrary item from the set.
 - **`clear()`**: Removes all items from the set, making it empty.
 
 **Example:**
+
 ```python
 tasks = {"review code", "write tests", "deploy", "get coffee"}
 
@@ -132,14 +143,18 @@ print(tasks) # Output: set()
 
 ---
 
-## Advanced Set Operations (Mathematical)
+## Advanced Set Operations
+
+(Mathematical)
 
 Sets shine when you need to compare them. These operations are highly efficient.
 
 ### Union: Combining Sets
+
 A union (`|` or `.union()`) returns a new set containing all unique items from both sets.
 
 **Example:**
+
 ```python
 developers = {"Alice", "Bob", "Charlie"}
 testers = {"Charlie", "David", "Eve"}
@@ -154,9 +169,11 @@ print(all_staff_method)
 ```
 
 ### Intersection: Finding Common Elements
+
 An intersection (`&` or `.intersection()`) returns a new set containing only the items present in **both** sets.
 
 **Example:**
+
 ```python
 developers = {"Alice", "Bob", "Charlie"}
 testers = {"Charlie", "David", "Eve"}
@@ -167,9 +184,11 @@ print(cross_functional)  # Output: {'Charlie'}
 ```
 
 ### Difference: Finding Unique Elements in One Set
+
 A difference (`-` or `.difference()`) returns a new set with items that are in the first set but **not** in the second set.
 
 **Example:**
+
 ```python
 developers = {"Alice", "Bob", "Charlie"}
 testers = {"Charlie", "David", "Eve"}
@@ -184,9 +203,11 @@ print(only_testers)  # Output: {'David', 'Eve'}
 ```
 
 ### Symmetric Difference: Finding Non-Shared Elements
+
 A symmetric difference (`^` or `.symmetric_difference()`) returns a new set with items that are in either of the sets, but **not** in both.
 
 **Example:**
+
 ```python
 developers = {"Alice", "Bob", "Charlie"}
 testers = {"Charlie", "David", "Eve"}
@@ -198,23 +219,82 @@ print(specialists)  # Output: {'Alice', 'Bob', 'David', 'Eve'}
 
 ---
 
+## Chaining Set Methods for Complex Queries
+
+You can chain multiple set methods together to perform sophisticated data analysis in a single, readable expression. This is possible because set operations like `.union()`, `.intersection()`, and `.difference()` return a new set, allowing you to immediately call another set method on the result.
+
+**Example: Treasure Hunt Analysis**
+
+Imagine you have treasures from three different regions and want to analyze them.
+
+```python
+region1 = {"gold coin", "ruby", "emerald", "pearl"}
+region2 = {"ruby", "emerald", "sapphire"}
+region3 = {"emerald", "diamond", "sapphire"}
+
+# 1. Shared Treasures (in all three regions)
+shared_treasures = region1.intersection(region2, region3)
+print(f"Shared: {shared_treasures}") # Output: {'emerald'}
+
+# 2. All discovered treasures (unique)
+all_treasures = region1.union(region2, region3)
+print(f"All treasures: {all_treasures}")
+
+# 3. Complex Query: Find treasures exclusive to a single region
+exclusive_treasures = (
+    region1.difference(region2.union(region3))
+    .union(region2.difference(region1.union(region3)))
+    .union(region3.difference(region1.union(region2)))
+)
+print(f"Exclusive treasures: {exclusive_treasures}") # Output: {'pearl', 'gold coin', 'diamond'}
+```
+
+### Breaking Down the `exclusive_treasures` Logic:
+
+The expression looks complex, but it's a chain of simple steps:
+
+1.  **`region1.difference(region2.union(region3))`**:
+
+    - First, `region2.union(region3)` creates a temporary set of all items in regions 2 and 3 (`{'ruby', 'emerald', 'sapphire', 'diamond'}`).
+    - Then, `.difference()` finds items in `region1` that are **not** in that temporary set.
+    - Result: `{'gold coin', 'pearl'}`.
+
+2.  **`.union(region2.difference(region1.union(region3)))`**:
+
+    - The result from step 1 is then combined (`union`) with the next part.
+    - `region1.union(region3)` creates a set of items from regions 1 and 3.
+    - `region2.difference(...)` finds items in `region2` that are not in that new set.
+    - Result: `{}` (an empty set, as both 'ruby' and 'sapphire' are in the other regions).
+
+3.  **`.union(region3.difference(region1.union(region2)))`**:
+    - Finally, the result is combined with the last part.
+    - `region1.union(region2)` creates a set of items from regions 1 and 2.
+    - `region3.difference(...)` finds items in `region3` not in that set.
+    - Result: `{'diamond'}`.
+
+The final `union` of `{'gold coin', 'pearl'}`, `{}`, and `{'diamond'}` gives the correct set of treasures that are unique to a single region.
+
+---
+
 ## Helpful Set Methods
 
-| Method | Description |
-|---|---|
-| `copy()` | Returns a shallow copy of the set. |
-| `issubset(other)` | Returns `True` if all items in this set are in `other`. |
+| Method              | Description                                                 |
+| ------------------- | ----------------------------------------------------------- |
+| `copy()`            | Returns a shallow copy of the set.                          |
+| `issubset(other)`   | Returns `True` if all items in this set are in `other`.     |
 | `issuperset(other)` | Returns `True` if this set contains all items from `other`. |
-| `isdisjoint(other)` | Returns `True` if the two sets have no common items. |
+| `isdisjoint(other)` | Returns `True` if the two sets have no common items.        |
 
 ---
 
 ## Practical Scenarios and Use Cases
 
 ### Scenario 1: Removing Duplicates from a List
+
 This is the most common and straightforward use of sets.
 
 **Problem**: You have a list of guest IDs with duplicates and need a unique list.
+
 ```python
 guest_ids = [101, 205, 301, 101, 402, 205]
 
@@ -228,9 +308,11 @@ print(unique_guest_ids_list) # Output: [402, 101, 205, 301] (order may vary)
 ```
 
 ### Scenario 2: Membership Testing (Fast Lookups)
+
 Checking for an item's existence in a set is much faster than in a list, especially for large collections.
 
 **Problem**: You have a large list of banned usernames and need to quickly check if a new username is already banned.
+
 ```python
 banned_users_list = ["user123", "spammer42", "hacker007", ... ] # Imagine this has 1 million users
 banned_users_set = set(banned_users_list) # Do this once
@@ -244,7 +326,9 @@ if username_to_check in banned_users_set:
 ```
 
 ### Scenario 3: Comparing Two Groups of Items
+
 **Problem**: You have the list of students who attended a morning lecture and an afternoon lecture. You want to find out who attended both.
+
 ```python
 morning_attendees = {"Alice", "Bob", "Charlie", "David"}
 afternoon_attendees = {"Charlie", "David", "Eve", "Frank"}
