@@ -1,13 +1,18 @@
-let billAmount = parseFloat(1000);
-let tipPercentage = parseFloat(15);
-let numPeople = 7;
+for (let i = 1; i <= 10; i++) {
+  let seven = 7;
+  let result = (seven *= i);
+  console.log(`7 x ${i} = ${result}`);
+}
+// let billAmount = parseFloat(1000);
+// let tipPercentage = parseFloat(15);
+// let numPeople = 7;
 
-let tipAmount = (tipPercentage / 100) * billAmount;
-let totalAmount = billAmount + tipAmount;
-let amountPerPerson = totalAmount / numPeople;
+// let tipAmount = (tipPercentage / 100) * billAmount;
+// let totalAmount = billAmount + tipAmount;
+// let amountPerPerson = totalAmount / numPeople;
 
-console.log(totalAmount);
-console.log(amountPerPerson);
+// console.log(totalAmount);
+// console.log(amountPerPerson);
 
 // let length = 5;
 // let width = 3.2;
