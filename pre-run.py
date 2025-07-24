@@ -51,3 +51,44 @@ print("Shared treasures:", sorted(list(shared_treasures)))
 print("Unique treasures in region1:", sorted(list(unique_treasures_region1)))
 print("All treasures:", sorted(list(all_treasures)))
 print("Exclusive treasures:", sorted(list(exclusive_treasures)))
+print("\n----------------------------Challenge 4-------------------------------------\n")
+# ----------------------------------------SUB SETS--------------------------------------
+
+set1 = {1, 2}
+set2 = {1, 2, 3}
+
+is_subset = set1.issubset(set2)
+is_superset = set2.issuperset(set1)
+print(is_subset)
+print(is_superset)
+
+P = {1, 2, 3, 4}
+Q = {1, 2, 3, 4}
+
+subset = P <= Q
+superset = Q > P
+print(subset, superset)
+
+def check_sets(set1, set2):
+    # Check if set1 is a subset of set2
+    is_subset = set1.issubset(set2)
+
+    # Check if set2 is a superset of set1
+    is_superset = set2 >= set1
+
+    # Check if set1 is a proper subset of set2
+    is_proper_subset = set1 < set2
+
+    # Check if set2 is a proper superset of set1
+    is_proper_superset = set2 > set1
+
+    # Return a dictionary containing the results
+    return {
+        "is_subset": is_subset,
+        "is_superset": is_superset,
+        "is_proper_subset": is_proper_subset,
+        "is_proper_superset": is_proper_superset
+    }
+
+print(check_sets({1,2}, {1,2,3,4}))
+print(check_sets({1,2,3}, {1,2,3}))
