@@ -92,3 +92,35 @@ def check_sets(set1, set2):
 
 print(check_sets({1,2}, {1,2,3,4}))
 print(check_sets({1,2,3}, {1,2,3}))
+print("\n----------------------------Challenge 5-------------------------------------\n")
+# -------------------Iterating over sets--------------------------------------------
+
+def iterate_and_filter_set(input_set):
+    # Write code here
+    new_set = set()
+    for element in input_set:
+        if element > 10:
+            continue
+        new_set.add(element)
+    return new_set
+
+# Can also be done like this
+
+# def iterate_and_filter_set(input_set):
+#     return {element for element in input_set if element <= 10}
+
+print(iterate_and_filter_set({5,12,7,15,3,10}))
+
+print("\n----------------------------Challenge 5 1/2-------------------------------------\n")
+def filter_and_square_set(input_set):
+    odd_set = set()
+    for el in input_set:
+        if el % 2 == 0:
+            continue
+        odd_set.add(el ** 2)
+    return odd_set
+
+# def get_squared_odds(input_set):
+    # return {el ** 2 for el in input_set if el % 2 != 0}
+
+print(filter_and_square_set({1,2,3,4,5}))
