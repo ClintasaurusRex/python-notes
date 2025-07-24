@@ -124,3 +124,19 @@ def filter_and_square_set(input_set):
     # return {el ** 2 for el in input_set if el % 2 != 0}
 
 print(filter_and_square_set({1,2,3,4,5}))
+
+print("\n----------------------------Challenge 6-------------------------------------\n")
+
+match1 = {"Alice", "Bob", "Charlie", "Diana"}
+match2 = {"Charlie", "Diana", "Eve", "Frank"}
+match3 = {"Alice", "Diana", "Frank", "George"}
+
+in_1_and_2 = match1 & match2
+in_1_and_3 = match1 & match3
+in_2_and_3 = match2 & match3
+
+in_two_or_more = in_1_and_2 | in_1_and_3 | in_2_and_3
+in_all_three = match1 & match2 & match3
+in_exactly_two = in_two_or_more - in_all_three
+
+print(in_exactly_two)
