@@ -131,6 +131,8 @@ match1 = {"Alice", "Bob", "Charlie", "Diana"}
 match2 = {"Charlie", "Diana", "Eve", "Frank"}
 match3 = {"Alice", "Diana", "Frank", "George"}
 
+all_matches = sorted(list(match1 & match2 & match3))
+
 in_1_and_2 = match1 & match2
 in_1_and_3 = match1 & match3
 in_2_and_3 = match2 & match3
@@ -138,5 +140,6 @@ in_2_and_3 = match2 & match3
 in_two_or_more = in_1_and_2 | in_1_and_3 | in_2_and_3
 in_all_three = match1 & match2 & match3
 in_exactly_two = in_two_or_more - in_all_three
-
-print(in_exactly_two)
+sorted(list(in_exactly_two))
+print(sorted(list(in_exactly_two)))
+print(all_matches)
