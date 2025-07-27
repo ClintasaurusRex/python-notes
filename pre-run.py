@@ -127,9 +127,13 @@ print(filter_and_square_set({1,2,3,4,5}))
 
 print("\n----------------------------Challenge 6-------------------------------------\n")
 
-match1 = {"Alice", "Bob", "Charlie", "Diana"}
-match2 = {"Charlie", "Diana", "Eve", "Frank"}
-match3 = {"Alice", "Diana", "Frank", "George"}
+# match1 = {"Alice", "Bob", "Charlie", "Diana"}
+# match2 = {"Charlie", "Diana", "Eve", "Frank"}
+# match3 = {"Alice", "Diana", "Frank", "George"}
+
+match1 ={"Alice", "Bob"}
+match2 = {"Charlie", "Diana"}
+match3 = {"Eve", "Frank"}
 
 all_matches = sorted(list(match1 & match2 & match3))
 
@@ -140,6 +144,22 @@ in_2_and_3 = match2 & match3
 in_two_or_more = in_1_and_2 | in_1_and_3 | in_2_and_3
 in_all_three = match1 & match2 & match3
 in_exactly_two = in_two_or_more - in_all_three
-sorted(list(in_exactly_two))
-print(sorted(list(in_exactly_two)))
-print(all_matches)
+
+all_players = match1 | match2 | match3
+in_one = all_players.difference(in_two_or_more)
+
+# Count the total number of unique players
+count = len(match1.union(match2, match3))
+
+# find players in match 1 only
+in_match1 = match1.difference(match2, match3)
+
+sort_all_match = sorted(list(all_matches))
+sort_two_matches = sorted(list(in_exactly_two))
+sort_one_match = sorted(list(in_one))
+sort_only_match1 = sorted(list(in_match1))
+
+print(f"Players in all matches: {sort_all_match}")
+print(f"Players in exactly two matches: {sort_two_matches}")
+print(f"Players in only one match: {sort_one_match}")
+print(f"Players in Match 1 only: {sort_only_match1}")
