@@ -25,11 +25,12 @@ def add_student(name: str, age: int, courses: list[str]):
 # Print "Grade <grade> added for student '<name>'.".
 
 def add_grade(name: str, grade: int):
-  if name not in student_records:
-    print(f"Student '{name}' not found.")
-  else:
-    student_records[name]['grades'].add (grade)
-    print(f"Grade {grade} added for student '{name}'")
+    key = name.capitalize()
+    if key not in student_records:
+        print(f"Student '{name}' not found.")
+    else:
+        student_records[key]['grades'].add(grade)
+        print(f"Grade {grade} added for student '{name}'")
   
 def is_enrolled(name: str, course: str):
   key = name.capitalize()
@@ -40,9 +41,20 @@ def is_enrolled(name: str, course: str):
     return True
   else:
     return False
+  
+  
+def calculate_average_grade(name: str):
+  key = name.capitalize()
+  if key not in student_records:
+    print(f"Student '{name}' not found.")
+    return None
+  grades = student_records[key]['grades']
+  if not grades:
+    print('f"Student {name} not found')
     
-    
-    
+  average = sum(grades) / len(grades)
+  return average
+  
     
 
 add_student("Alice", 20, ["Math", "Physics"])
@@ -50,8 +62,7 @@ add_student("Bob", 22, ["Biology", "Chemistry"])
 add_grade("Alice", 90)
 add_grade("Alice", 85)
 add_grade("Bob", 75)
-add_grade("Charlie", 80)  # Non-existent student
-print(is_enrolled("Alice", "Math"))  # Should return True
-print(is_enrolled("Alice", "Biology"))  # Should return False
-print(is_enrolled("Bob", "Biology"))  # Should return True
-print(is_enrolled("Charlie", "Math"))  # Non-existent student, should print message and return False
+print(calculate_average_grade("Alice"))  # Should return 87.5
+print(calculate_average_grade("Bob"))  # Should return 75.0
+print(calculate_average_grade("Charlie"))  # Non-existent student, should print message and return None
+print(calculate_average_grade("Alice"))  # Should return 87.5 again
