@@ -1,8 +1,12 @@
-for (let i = 1; i <= 10; i++) {
-  let seven = 7;
-  let result = (seven *= i);
-  console.log(`7 x ${i} = ${result}`);
+let n = 5;
+let factorial = 1;
+
+for (let i = 1; i <= n; i++) {
+  factorial *= i;
 }
+
+console.log(factorial);
+
 // let billAmount = parseFloat(1000);
 // let tipPercentage = parseFloat(15);
 // let numPeople = 7;

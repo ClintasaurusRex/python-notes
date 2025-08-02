@@ -55,6 +55,11 @@ def calculate_average_grade(name: str):
   average = sum(grades) / len(grades)
   return average
   
+def list_students_by_course(course: str):
+  enrolled_students = []
+  for name, info in student_records.items():
+    if course in info['courses']:
+      enrolled_students.append(name)
     
 
 add_student("Alice", 20, ["Math", "Physics"])
@@ -62,7 +67,9 @@ add_student("Bob", 22, ["Biology", "Chemistry"])
 add_grade("Alice", 90)
 add_grade("Alice", 85)
 add_grade("Bob", 75)
-print(calculate_average_grade("Alice"))  # Should return 87.5
-print(calculate_average_grade("Bob"))  # Should return 75.0
-print(calculate_average_grade("Charlie"))  # Non-existent student, should print message and return None
-print(calculate_average_grade("Alice"))  # Should return 87.5 again
+# print(calculate_average_grade("Alice"))  # Should return 87.5
+# print(calculate_average_grade("Bob"))  # Should return 75.0
+# print(calculate_average_grade("Charlie"))  # Non-existent student, should print message and return None
+# print(calculate_average_grade("Alice"))  # Should return 87.5 again
+list_students_by_course('Math')
+print(student_records)
