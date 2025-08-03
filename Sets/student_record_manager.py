@@ -16,13 +16,6 @@ def add_student(name: str, age: int, courses: list[str]):
             'courses': set(courses)
         }
         print(f"Student '{name}' added successfully.")
-        
-# Create a function named add_grade that takes two arguments: name (string) and grade (integer). 
-# The function should:
-# Check if the student name exists in the student_records dictionary.
-# If it does not exist, print "Student '<name>' not found.".
-# If the name exists, add the grade to the student's grades set.
-# Print "Grade <grade> added for student '<name>'.".
 
 def add_grade(name: str, grade: int):
     key = name.capitalize()
@@ -30,7 +23,7 @@ def add_grade(name: str, grade: int):
         print(f"Student '{name}' not found.")
     else:
         student_records[key]['grades'].add(grade)
-        print(f"Grade {grade} added for student '{name}'")
+        print(f"Grade {grade} added for student '{name}'.")
   
 def is_enrolled(name: str, course: str):
   key = name.capitalize()
@@ -63,17 +56,20 @@ def list_students_by_course(course: str):
     
   return enrolled_students
     
+def filter_top_students(threshold: float):
+    top_students = []
+    for name, info in student_records.items():
+        if info['grades'] and calculate_average_grade(name) >= threshold:
+            top_students.append(name)
+    return top_students
 
 add_student("Alice", 20, ["Math", "Physics"])
 add_student("Bob", 22, ["Math", "Biology"])
 add_student("Diana", 23, ["Chemistry", "Physics"])
-print(list_students_by_course("Math"))  # Should return ["Alice", "Bob"]
-print(list_students_by_course("Physics"))  # Should return ["Alice", "Diana"]
-print(list_students_by_course("Biology"))  # Should return ["Bob"]
-print(list_students_by_course("History"))  # Should return an empty list
-# print(calculate_average_grade("Alice"))  # Should return 87.5
-# print(calculate_average_grade("Bob"))  # Should return 75.0
-# print(calculate_average_grade("Charlie"))  # Non-existent student, should print message and return None
-# print(calculate_average_grade("Alice"))  # Should return 87.5 again
-# list_students_by_course('Math')
-print(student_records)
+add_grade("Alice", 90)
+add_grade("Alice", 85)
+add_grade("Bob", 75)
+add_grade("Diana", 95)
+print(filter_top_students(80))  # Should return ["Alice", "Diana"]
+print(filter_top_students(90))  # Should return ["Diana"]
+print(filter_top_students(100))  # Should return an empty list
