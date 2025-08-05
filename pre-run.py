@@ -47,7 +47,12 @@ print(sum_positive_numbers(numbers))
 
 print("------------------------------------Challenge Five --------------------------------------------")
 #  ---------------------------------------- House of Lists ------------------------------------------
+list_of_lists = [[10, 20, 30], [1, 2, 3], [5, 50, 5], [0, 3, 6, 9]]
 
+greater50 = [lst for lst in list_of_lists if sum(lst) >= 50]
+filtered = [[num for num in lst if num <= 5] for lst in greater50]
+combined = greater50 + filtered
+print(combined)
 
 # -------------------------------------- Basic List Comprehensions ---------------------------------
 
