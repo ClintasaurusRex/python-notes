@@ -49,10 +49,16 @@ print("------------------------------------Challenge Five ----------------------
 #  ---------------------------------------- House of Lists ------------------------------------------
 list_of_lists = [[10, 20, 30], [1, 2, 3], [5, 50, 5], [0, 3, 6, 9]]
 
-greater50 = [lst for lst in list_of_lists if sum(lst) >= 50]
-filtered = [[num for num in lst if num <= 5] for lst in greater50]
-combined = greater50 + filtered
-print(combined)
+def house_of_lists(list_of_lists):
+    # Filter inner lists with sum <= 50
+    filtered_lists = [lst for lst in list_of_lists if sum(lst) <= 50]
+    # Extract numbers less than 5 from each filtered list
+    extracted = [num for lst in filtered_lists for num in lst if num < 5]
+    return extracted
+
+# Example usage:
+list_of_lists = [[10, 20, 30], [1, 2, 3], [5, 50, 5], [0, 3, 6, 9]]
+print(house_of_lists(list_of_lists))  # Output: [1, 2, 3, 0, 3]
 
 # -------------------------------------- Basic List Comprehensions ---------------------------------
 
