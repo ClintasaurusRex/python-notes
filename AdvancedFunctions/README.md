@@ -1,172 +1,282 @@
-# Advanced Python Functions: A Guide
+# Advanced Python Functions: Complete Reference Guide
 
-This guide covers advanced function concepts in Python, including how to return multiple values from a function and how to use lambda functions for concise, on-the-fly operations.
+This comprehensive guide covers advanced function concepts in Python, including returning multiple values, lambda functions, and recursive functions. All examples include practical applications and expected outputs.
 
 ## Table of Contents
 
 1. [Returning Multiple Values](#returning-multiple-values)
 2. [Lambda Functions](#lambda-functions)
+3. [Recursive Functions](#recursive-functions)
 
 ---
 
 ## Returning Multiple Values
 
-In Python, a function can return multiple values by packing them into a tuple. When you call the function, you can unpack the returned tuple into multiple variables. This is a clean and readable way to handle functions that need to output more than one piece of information.
+Functions in Python can return multiple values by separating them with commas. This creates a tuple that can be unpacked into multiple variables.
 
-### Syntax and Example
+### Basic Syntax
 
-The values are simply separated by commas in the `return` statement.
+```python
+def function_name():
+    value1 = "something"
+    value2 = "something else"
+    value3 = "another thing"
+    return value1, value2, value3
+
+# Unpack the returned tuple
+var1, var2, var3 = function_name()
+```
+
+### Example 1: Student Information
 
 ```python
 def get_student_info():
-    """
-    Returns a student's name, age, and major.
-    """
-    name = "Alice"
+    name = "Bob"
     age = 20
     major = "Computer Science"
     return name, age, major
 
-# Unpack the returned tuple into three variables
 student_name, student_age, student_major = get_student_info()
-
-print(f"Name: {student_name}")
-print(f"Age: {student_age}")
-print(f"Major: {student_major}")
+print(student_name)    # Output: Bob
+print(student_age)     # Output: 20
+print(student_major)   # Output: Computer Science
 ```
 
-### Output
+### Example 2: Product Information
 
+```python
+def get_product_info():
+    name = "Laptop"
+    price = 999.88
+    rating = 4.5
+    return name, price, rating
+
+product_name, product_price, product_rating = get_product_info()
+print(product_name)    # Output: Laptop
+print(product_price)   # Output: 999.88
+print(product_rating)  # Output: 4.5
 ```
-Name: Alice
-Age: 20
-Major: Computer Science
-```
+
+### Key Points:
+
+- Values are returned as a tuple
+- You can unpack into separate variables
+- Useful for functions that need to return related data
+- Makes code cleaner than using dictionaries for simple cases
 
 ---
 
 ## Lambda Functions
 
-A **lambda function** is a small, anonymous function defined with the `lambda` keyword. It can take any number of arguments but can only have one expression. Lambda functions are syntactically restricted to a single expression and are typically used when you need a simple function for a short period.
+Lambda functions are small, anonymous functions that can have any number of arguments but only one expression. They're perfect for short, simple operations.
 
-### Syntax
-
-The syntax for a lambda function is:
-`lambda arguments: expression`
-
-### Example: A Simple Multiplier
-
-Here’s a lambda function that multiplies three numbers.
+### Basic Syntax
 
 ```python
-multiply = lambda x, y, z: x * y * z
+lambda arguments: expression
+```
 
+### Example 1: Basic Math Operations
+
+```python
+# Multiply three numbers
+multiply = lambda num1, num2, num3: num1 * num2 * num3
 result = multiply(2, 3, 4)
-print(f"The result is: {result}")
+print(result)  # Output: 24
+
+# Add two numbers
+add = lambda x, y: x + y
+result = add(5, 3)
+print(result)  # Output: 8
 ```
 
-### Output
-
-```
-The result is: 24
-```
-
-### Common Use Case: Sorting with a Lambda
-
-Lambda functions are often used as arguments to higher-order functions like `sorted()`, `map()`, and `filter()`. For example, you can use a lambda to specify a custom sort key.
+### Example 2: Variable Arguments with \*args
 
 ```python
-# A list of tuples (student, grade)
-students = [("Alice", 88), ("Bob", 95), ("Charlie", 82)]
-
-# Sort the list of students by their grade (the second item in the tuple)
-sorted_students = sorted(students, key=lambda student: student[1])
-
-print(sorted_students)
+# Calculate average of multiple numbers
+average = lambda *args: sum(args) / len(args)
+result = average(10, 15, 20, 25)
+print(result)  # Output: 17.5
 ```
 
-### Output
-
-```
-[('Charlie', 82), ('Alice', 88), ('Bob', 95)]
-```
-
-### When to Use Lambda Functions
-
-Lambdas are best suited for situations where you need a simple, one-line function for a short period. They help you write more concise and readable code without the clutter of a full function definition using `def`.
-
-**Common use cases include:**
-
-1.  **As Arguments to Higher-Order Functions**: This is the most common and idiomatic use of lambdas.
-
-    - **`map(function, iterable)`**: Applies a function to every item of an iterable.
-    - **`filter(function, iterable)`**: Filters items from an iterable based on a function that returns `True` or `False`.
-    - **`sorted(iterable, key=...)`**: Provides a custom key for sorting.
-
-2.  **Short, Throwaway Functions**: When you need a function for a single, specific task and don't want to define a full function for it.
-
-3.  **GUI Frameworks**: In libraries like Tkinter or PyQt, lambdas are often used for event handlers (e.g., button clicks) that execute a simple action.
-
-### More Examples with Higher-Order Functions
-
-#### Using `map()`
-
-`map()` applies a function to all items in an input list.
+### Example 3: Conditional Logic in Lambdas
 
 ```python
-numbers = [1, 2, 3, 4, 5]
+# Grade status based on score
+grade_status = lambda score: "Amazing!" if score == 100 else "Pass" if score >= 60 else "Fail"
 
-# Use a lambda to square each number in the list
-squared_numbers = list(map(lambda x: x * x, numbers))
+# Categorize numbers
+categorize_number = lambda num: "Positive" if num > 0 else "Zero" if num == 0 else "Negative"
 
-print(squared_numbers)
+print(categorize_number(-5))  # Output: Negative
+print(categorize_number(0))   # Output: Zero
+print(categorize_number(10))  # Output: Positive
 ```
 
-**Output:**
-
-```
-[1, 4, 9, 16, 25]
-```
-
-#### Using `filter()`
-
-`filter()` creates a list of elements for which a function returns `True`.
+### Example 4: Lambda with Higher-Order Functions
 
 ```python
-numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+# Sorting tuples by second element (age)
+students = [("Alice", 25), ("Bob", 30), ("Charlie", 20)]
 
-# Use a lambda to filter out only the even numbers
-even_numbers = list(filter(lambda x: x % 2 == 0, numbers))
+def sort_tuples(data):
+    sorted_data = sorted(data, key=lambda x: x[1])
+    return sorted_data
 
-print(even_numbers)
+print(sort_tuples(students))
+# Output: [('Charlie', 20), ('Alice', 25), ('Bob', 30)]
 ```
 
-**Output:**
+### Common Use Cases for Lambdas:
 
+- **Sorting**: Custom sort keys
+- **Filtering**: Simple conditions
+- **Mapping**: Quick transformations
+- **Event handling**: GUI callbacks
+- **Functional programming**: With `map()`, `filter()`, `reduce()`
+
+### Lambda Best Practices:
+
+- Keep them simple (one expression only)
+- Use for short-lived, throwaway functions
+- If the logic gets complex, use a regular function instead
+- Perfect for higher-order functions like `sorted()`, `map()`, `filter()`
+
+---
+
+## Recursive Functions
+
+Recursive functions are functions that call themselves. They consist of a base case (stopping condition) and a recursive case (where the function calls itself with modified parameters).
+
+### Basic Structure
+
+```python
+def recursive_function(parameter):
+    # Base case - stopping condition
+    if stopping_condition:
+        return base_value
+
+    # Recursive case - function calls itself
+    return recursive_function(modified_parameter)
 ```
-[2, 4, 6, 8, 10]
+
+### Example 1: Countdown Function
+
+```python
+def count_down(n):
+    print(n)
+    if n == 0:  # Base case
+        return
+    count_down(n - 1)  # Recursive call
+
+count_down(3)
+# Output:
+# 3
+# 2
+# 1
+# 0
 ```
 
-names = ["Alice", "Bob", "Charlie", "Diana"]
-sorted_names = sorted(names, key=lambda x: len(x))
-print(sorted_names)
+### Example 2: Countdown with Custom Messages
 
-# Output: ['Bob', 'Alice', 'Diana', 'Charlie']
+```python
+def print_sequence(n):
+    print(f"T-minus {n}")
+    if n == 1:  # Base case
+        print("Blast off!")
+        return
+    print_sequence(n - 1)  # Recursive call
 
-grades = {"Alice": 85, "Bob": 90, "Charlie": 78}
-sorted_grades = sorted(grades.items(), key=lambda x: x[1])
-print(sorted_grades)
+print_sequence(3)
+# Output:
+# T-minus 3
+# T-minus 2
+# T-minus 1
+# Blast off!
+```
 
-# Output: [('Charlie', 78), ('Alice', 85), ('Bob', 90)]
+### Example 3: Fibonacci Sequence
 
-numbers = [-10, 15, -20, 25]
-sorted_numbers = sorted(numbers, key=lambda x: abs(x))
-print(sorted_numbers)
+```python
+def fibonacci(n):
+    if n == 1:        # Base case 1
+        return 0
+    elif n == 2:      # Base case 2
+        return 1
+    else:             # Recursive case
+        return fibonacci(n - 1) + fibonacci(n - 2)
 
-# Output: [-10, 15, -20, 25]
+print(fibonacci(1))  # Output: 0
+print(fibonacci(2))  # Output: 1
+print(fibonacci(6))  # Output: 5
+```
 
-data = [("Alice", 25), ("Bob", 30), ("Charlie", 25)]
-sorted_data = sorted(data, key=lambda x: (x[1], x[0]))
-print(sorted_data)
+### Example 4: Sum of Digits
 
-# Output: [('Alice', 25), ('Charlie', 25), ('Bob', 30)]
+```python
+def sum_digits(n):
+    if n < 10:        # Base case - single digit
+        return n
+    else:             # Recursive case
+        return n % 10 + sum_digits(n // 10)
+
+print(sum_digits(1234))  # Output: 10 (1 + 2 + 3 + 4)
+print(sum_digits(1001))  # Output: 2 (1 + 0 + 0 + 1)
+```
+
+**How it works:**
+
+- `n % 10` gets the last digit
+- `n // 10` removes the last digit
+- Keep calling until `n < 10` (single digit)
+
+### Example 5: Sum Nested Lists
+
+```python
+def sum_nested(nested_list):
+    total = 0
+    for element in nested_list:
+        if isinstance(element, list):    # If element is a list
+            total += sum_nested(element) # Recursive call
+        else:                           # If element is a number
+            total += element
+    return total
+
+nested_list = [1, [2, 3], [4, [5, 6]], 7]
+print(sum_nested(nested_list))  # Output: 28
+```
+
+**How it works:**
+
+- Iterate through each element
+- If element is a list, recursively sum its contents
+- If element is a number, add it to total
+- `isinstance(element, list)` checks if element is a list
+
+### Recursive Function Guidelines:
+
+1. **Always have a base case** - prevents infinite recursion
+2. **Make progress toward the base case** - each call should get closer to stopping
+3. **Handle edge cases** - empty lists, zero, negative numbers, etc.
+4. **Consider performance** - recursion can be memory-intensive for large inputs
+5. **Think about the problem structure** - recursion works well for tree-like or self-similar problems
+
+### Common Recursive Patterns:
+
+- **Mathematical sequences** (Fibonacci, factorials)
+- **Tree traversals** (file systems, data structures)
+- **Divide and conquer** (merge sort, quick sort)
+- **Backtracking** (puzzles, pathfinding)
+- **Nested data processing** (JSON parsing, nested lists)
+
+---
+
+## Summary
+
+These advanced function concepts provide powerful tools for writing clean, efficient Python code:
+
+- **Multiple return values** simplify functions that need to return related data
+- **Lambda functions** provide concise ways to write simple functions
+- **Recursive functions** elegantly solve problems that have self-similar structure
+
+Mastering these concepts will make your Python code more expressive and help you tackle complex programming challenges with confidence.
