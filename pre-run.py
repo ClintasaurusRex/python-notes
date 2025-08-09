@@ -56,6 +56,25 @@ categorize_number = lambda num: "Positive" if num > 0 else "Zero" if num == 0 el
 # Call your lambda function with the input number and print the result
 print(categorize_number(number))
 
+print("------------------------------------------Challenge 4 Sort Lambda ---------------------------------")
+
+tup = [("Alice", 25), ("Bob", 30), ("Charlie", 20)]
+
+def sort_tuples(data):
+  sorted_data = sorted(data, key=lambda x: x[1])
+  return sorted_data
+print(sort_tuples(tup))
+
+print("------------------------------------------Challenge 5 Recursive ---------------------------------")
+def count_down(n):
+    print(n)
+    if n == 0:
+        return
+    count_down(n - 1)
+
+count_down(3)
+
+
 print("-----------------------------------------------Advanced Functions -----------------------------------")
 # # Starter code: Multi-level dictionary practice
 
