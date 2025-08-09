@@ -1,11 +1,29 @@
-let n = 5;
-let factorial = 1;
+let count2 = 10;
+do {
+  console.log(`Counting down: ${count2}`);
+  count2--;
+} while (count2 >= 0);
 
-for (let i = 1; i <= n; i++) {
-  factorial *= i;
-}
+// let count = 10;
+// do {
+//   console.log(count);
+//   count--;
+// } while (count > 0);
 
-console.log(factorial);
+// let x = 10;
+// do {
+//   console.log(x);
+//   x -= 3;
+// } while (x > 0);
+
+// let n = 5;
+// let factorial = 1;
+
+// for (let i = 1; i <= n; i++) {
+//   factorial *= i;
+// }
+
+// console.log(factorial);
 
 // let billAmount = parseFloat(1000);
 // let tipPercentage = parseFloat(15);

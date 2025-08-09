@@ -60,6 +60,28 @@ def house_of_lists(list_of_lists):
 list_of_lists = [[10, 20, 30], [1, 2, 3], [5, 50, 5], [0, 3, 6, 9]]
 print(house_of_lists(list_of_lists))  # Output: [1, 2, 3, 0, 3]
 
+print("------------------------------------Challenge Six --------------------------------------------")
+#  ---------------------------------------- Elements of Freedom ------------------------------------------
+
+testCase = ["apple", "banana", "cherry", "date", "apple", "banana", "grape", "fig"]
+
+def elements_of_freedom(elements):
+    seen = set()
+    return [
+        item.upper()
+        for item in elements
+        if len(item) >= 5 and not (item.upper() in seen or seen.add(item.upper()))
+    ]
+
+
+# def elements_of_freedom(elements):
+#     #  Filter the elements with a length >= 5
+#     greater_then_5 = [item.upper() for item in elements if len(item) >= 5]
+#     unique_elements = list(set(greater_then_5))
+#     return unique_elements
+    
+    
+print(elements_of_freedom(testCase))
 # -------------------------------------- Basic List Comprehensions ---------------------------------
 
 # # Starter code: Multi-level dictionary practice
