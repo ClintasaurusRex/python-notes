@@ -27,6 +27,12 @@ print(product_price)
 print(product_rating)
 
 print("------------------------------------------Challenge 2 Lambda Functions ---------------------------------")
+# lambda arguments: expression
+# add = lambda x, y: x + y
+# result = add(5, 3)
+# print(result)
+# Output: 8
+
 # Create a Lambda function that multiplies three numbers
 multiply = lambda num1, num2, num3: num1 * num2 * num3
 result = multiply(2,3,4)
