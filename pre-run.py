@@ -74,6 +74,19 @@ def count_down(n):
 
 count_down(3)
 
+def print_sequence(n):
+    print(f"T-minus {n}")
+    if n == 1:
+        print("Blast off!")
+        return 
+    print_sequence(n - 1)
+
+print_sequence(3)
+
+print("------------------------------------------Challenge 6 Recursive Pt 2 ---------------------------------")
+
+
+    
 
 print("-----------------------------------------------Advanced Functions -----------------------------------")
 # # Starter code: Multi-level dictionary practice
