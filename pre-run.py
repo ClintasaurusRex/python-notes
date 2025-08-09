@@ -1,89 +1,38 @@
+print("-----------------------------------------------Advanced Functions -----------------------------------")
+print("-------------------------------------------Challenge One ---------------------------------------------")
+# ---------------------------------------Returning Multiple Values -------------------------------------------
 
-# -------------------------------------- Basic List Comprehensions ---------------------------------
-print("-------------------------------------Challenge One ------------------------------------------")
-nums = [1,2,3,4,5]
-def double_numbers(numbers):
-    return [n* 2 for n in numbers]
+def get_student_info():
+    name = "Bob"
+    age = 20
+    major = "Computer Science"
+    return name, age, major
 
-print(double_numbers(nums))
+student_name, student_age, student_major = get_student_info()
+print(student_name)
+print(student_age)
+print(student_major)
 
-print("------------------------------------Challenge Two --------------------------------------------")
-# -------------------------------------- Creating Simple Lists ---------------------------------------
-l1 = ["python", "list", "comprehension", "challenge"]
+# ----------------------------------------- second challenge of challenge one- ------------------------
 
-def get_word_length(words):
-    word_length = [len(word) for word in words]
-    return word_length
+def get_product_info():
+    name = "Laptop"
+    price = 999.88
+    rating = 4.5
+    return name, price, rating
 
-print(get_word_length(l1))
+product_name, product_price, product_rating = get_product_info()
+print(product_name)
+print(product_price)
+print(product_rating)
 
-# length = [len(item) for item in l1]
-# print(length)
+print("------------------------------------------Challenge 2 Lambda Functions ---------------------------------")
+# Create a Lambda function that multiplies three numbers
+multiply = lambda num1, num2, num3: num1 * num2 * num3
+result = multiply(2,3,4)
+print(result)
 
-print("------------------------------------Challenge Three --------------------------------------------")
-#  ---------------------------------------- Adding Conditions ------------------------------------------
-l2 = [-3, -2, 0, 1, 2, 3]
-
-def filter_and_square(numbers):
-    new_list = [n * n for n in numbers if n > 0]
-    return new_list
-
-print(filter_and_square(l2))
-# new_list = [n * n for n in l2 if n > 0]
-# print(new_list)
-
-print("------------------------------------Challenge Four --------------------------------------------")
-#  ---------------------------------------- Using Data Aggregation ------------------------------------------
-numbers = [-10, -5, 0, 2, 4, 7, 10, 12]
-
-def sum_positive_numbers(numbers):
-    posi_nums = sum([n for n in numbers if n > 0 and n % 2 ==0])
-    return posi_nums
-
-print(sum_positive_numbers(numbers))
-
-# sum_positive = sum([n for n in numbers if n > 0 and n % 2 == 0])
-# print(sum_positive)
-
-print("------------------------------------Challenge Five --------------------------------------------")
-#  ---------------------------------------- House of Lists ------------------------------------------
-list_of_lists = [[10, 20, 30], [1, 2, 3], [5, 50, 5], [0, 3, 6, 9]]
-
-def house_of_lists(list_of_lists):
-    # Filter inner lists with sum <= 50
-    filtered_lists = [lst for lst in list_of_lists if sum(lst) <= 50]
-    # Extract numbers less than 5 from each filtered list
-    extracted = [num for lst in filtered_lists for num in lst if num < 5]
-    return extracted
-
-# Example usage:
-list_of_lists = [[10, 20, 30], [1, 2, 3], [5, 50, 5], [0, 3, 6, 9]]
-print(house_of_lists(list_of_lists))  # Output: [1, 2, 3, 0, 3]
-
-print("------------------------------------Challenge Six --------------------------------------------")
-#  ---------------------------------------- Elements of Freedom ------------------------------------------
-
-testCase = ["apple", "banana", "cherry", "date", "apple", "banana", "grape", "fig"]
-
-def elements_of_freedom(elements):
-    seen = set()
-    return [
-        item.upper()
-        for item in elements
-        if len(item) >= 5 and not (item.upper() in seen or seen.add(item.upper()))
-    ]
-
-
-# def elements_of_freedom(elements):
-#     #  Filter the elements with a length >= 5
-#     greater_then_5 = [item.upper() for item in elements if len(item) >= 5]
-#     unique_elements = list(set(greater_then_5))
-#     return unique_elements
-    
-    
-print(elements_of_freedom(testCase))
-# -------------------------------------- Basic List Comprehensions ---------------------------------
-
+print("-----------------------------------------------Advanced Functions -----------------------------------")
 # # Starter code: Multi-level dictionary practice
 
 # school = {
