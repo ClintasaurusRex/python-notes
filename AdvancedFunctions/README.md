@@ -90,3 +90,59 @@ print(sorted_students)
 ```
 [('Charlie', 82), ('Alice', 88), ('Bob', 95)]
 ```
+
+### When to Use Lambda Functions
+
+Lambdas are best suited for situations where you need a simple, one-line function for a short period. They help you write more concise and readable code without the clutter of a full function definition using `def`.
+
+**Common use cases include:**
+
+1.  **As Arguments to Higher-Order Functions**: This is the most common and idiomatic use of lambdas.
+
+    - **`map(function, iterable)`**: Applies a function to every item of an iterable.
+    - **`filter(function, iterable)`**: Filters items from an iterable based on a function that returns `True` or `False`.
+    - **`sorted(iterable, key=...)`**: Provides a custom key for sorting.
+
+2.  **Short, Throwaway Functions**: When you need a function for a single, specific task and don't want to define a full function for it.
+
+3.  **GUI Frameworks**: In libraries like Tkinter or PyQt, lambdas are often used for event handlers (e.g., button clicks) that execute a simple action.
+
+### More Examples with Higher-Order Functions
+
+#### Using `map()`
+
+`map()` applies a function to all items in an input list.
+
+```python
+numbers = [1, 2, 3, 4, 5]
+
+# Use a lambda to square each number in the list
+squared_numbers = list(map(lambda x: x * x, numbers))
+
+print(squared_numbers)
+```
+
+**Output:**
+
+```
+[1, 4, 9, 16, 25]
+```
+
+#### Using `filter()`
+
+`filter()` creates a list of elements for which a function returns `True`.
+
+```python
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+# Use a lambda to filter out only the even numbers
+even_numbers = list(filter(lambda x: x % 2 == 0, numbers))
+
+print(even_numbers)
+```
+
+**Output:**
+
+```
+[2, 4, 6, 8, 10]
+```

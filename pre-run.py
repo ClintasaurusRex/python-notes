@@ -35,8 +35,26 @@ print("------------------------------------------Challenge 2 Lambda Functions --
 
 # Create a Lambda function that multiplies three numbers
 multiply = lambda num1, num2, num3: num1 * num2 * num3
-result = multiply(2,3,4)
+result1 = multiply(2,3,4)
+print(result1)
+
+# -----------------------------------------Second Lambda Challenge ============================
+# Create a lambda function that calculates the average of four numbers
+average = lambda *args: sum(args) / len(args)
+result = average(10,15,20,25)
 print(result)
+
+print("------------------------------------------Challenge 3 Lambda Functions Part 2 ---------------------------------")
+
+# Read a number from input
+number = -5
+
+# Define your lambda function here
+grade_status = lambda score: "Amazing!" if score == 100 else "Pass" if score >= 60 else "Fail"
+categorize_number = lambda num: "Positive" if num > 0 else "Zero" if num == 0 else "Negative" 
+
+# Call your lambda function with the input number and print the result
+print(categorize_number(number))
 
 print("-----------------------------------------------Advanced Functions -----------------------------------")
 # # Starter code: Multi-level dictionary practice
