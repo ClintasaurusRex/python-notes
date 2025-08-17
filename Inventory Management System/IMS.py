@@ -1,0 +1,59 @@
+inventory = {}
+print(inventory)
+
+def add_item(item: str, price: float, stock: int):
+  if item in inventory:
+    print(f"Error: Item '{item}' already exists.")
+  else:
+    inventory[item] = {"price": float(price), "stock": stock}
+    print(f"Item '{item}' added successfully.")
+    
+# add_item("Apple", 0.5, 100)
+# add_item("Banana", 0.2, 50)
+# add_item("Apple", 0.6, 30) 
+# print(inventory)  
+
+
+def update_stock(item:str, quantity: int):
+  if item not in inventory:
+    print(f"Error: '{item}' not found.")
+  else:
+    new_stock = inventory[item]["stock"] + quantity
+    if new_stock < 0:
+      print(f"Error: Insufficient stock for '{item}'.")
+    else:
+      inventory[item]["stock"] = new_stock
+      print(f"Stock for '{item}' updated successfully.")
+      
+def check_availability(item: str):
+  if item not in inventory:
+    return "Item no found"
+  else:
+    stock = inventory[item]["stock"]
+    return stock
+      
+def sales_report(sales: dict):
+    total = 0
+    for item, quantity_sold in sales.items():
+        if item not in inventory:
+            print(f"Error: Item '{item}' not found.")
+        else:
+            price = inventory[item]["price"]
+            stock = inventory[item]["stock"]
+            if quantity_sold > stock:
+                print(f"Error: Insufficient stock for '{item}'.")
+            else:
+                revenue = price * quantity_sold
+                total += revenue
+                inventory[item]["stock"] -= quantity_sold
+                print(f"Sold {quantity_sold} of '{item}' for ${revenue:.2f}.")
+    return f"Total revenue: ${total:.2f}"
+    
+add_item("Apple", 0.5, 50)
+add_item("Banana", 0.2, 60)
+sales = {"Apple": 30, "Banana": 20, "Orange": 10}  # Orange should print an error
+print(sales_report(sales))  # Should output: 19.0
+print(inventory)
+# testing = {}
+# testing['beats'] = {"stock": 20, "price": float(0.70)}
+# print(testing)
