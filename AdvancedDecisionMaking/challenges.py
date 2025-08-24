@@ -110,4 +110,4 @@ for x in range(my_time, 0, -1):
   time.sleep(1)
 
 time.sleep(3)
-print("TIMES UP")
+print("TIMES UP"):
