@@ -1,8 +1,27 @@
-let count2 = 10;
-do {
-  console.log(`Counting down: ${count2}`);
-  count2--;
-} while (count2 >= 0);
+function printMessage() {
+  let i = 0;
+  while (i < 3) {
+    console.log("This is a reusable function!");
+    i++;
+  }
+}
+printMessage();
+
+// function calc_sum() {
+//   sum = 0;
+//   for (let i = 0; i <= 10000; i++) {
+//     sum += i;
+//   }
+//   return sum;
+// }
+// for (let i = 0; i < 5; i++) {
+//   console.log(calc_sum());
+// }
+// let count2 = 10;
+// do {
+//   console.log(`Counting down: ${count2}`);
+//   count2--;
+// } while (count2 >= 0);
 
 // let count = 10;
 // do {
